@@ -6,12 +6,12 @@ Signup
 {% endblock %}
 
 {% block nav_items%}
-<li><a href="#"></a></li>
-<li><a href="index1.html">Try it out!</a></li>
+<li><a href="{% url 'radar:homepage1' %}"></a></li>
+<li><a href="{% url 'radar:homepage1' %}">Try it out!</a></li>
 {% endblock%}
 
 {% block btn%}
-<a class="cta" href="login.html"><button class="loginbtn">Login</button></a>
+<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
 {% endblock%}
 
       
