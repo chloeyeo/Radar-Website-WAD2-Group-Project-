@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="{% static 'style.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <title>
+            Radar -
+            {% block title_block %}
+                Radar page
+                {% endblock %}
+        </title> 
+    </head>
+
+    <header>
+        <img class="logo" src="" alt="logo">
+        <nav>
+            <ul class="nav-links">
+                {% block nav_items%}
+                    <li>nav items</li>
+                {% endblock%}
+            </ul>
+        </nav>
+        {% block btn%}
+        {% endblock%}
+    </header>
+
+    <body>
+            {% block body_block %}
+                This is body_block's default content.
+            {% endblock %}
+    </body> 
+</html>
