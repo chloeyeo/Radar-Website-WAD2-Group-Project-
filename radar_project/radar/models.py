@@ -19,3 +19,17 @@ class Session(models.Model):
 
     def __str__(self):
         return self.destination
+
+class UserProfile(models.Model):
+# This line is required. Links UserProfile to a User model instance.
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+# The additional attributes we wish to include.
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+    host = models.Boolean(default=False)
+    age = models.IntegerField(default=0)
+    shareLocation = models.BooleanField(default=False)
+    request = models.BooleanField(default=False)
+    accept = models.BooleanField(False)
+    
+    def __str__(self):
+        return self.user.username
