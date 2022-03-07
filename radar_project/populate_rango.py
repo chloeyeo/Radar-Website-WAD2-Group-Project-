@@ -7,7 +7,9 @@ from radar.models import FriendList, Session, UserProfile
 
 def populate():
 
-    user_profile = {
+    user_profile = [
+        {'id': 'jane012', 'firstName': 'Jane', 'lastName': 'Wilkins',
+         'age': 17, 'shareLocation': false } ]
 
     friend_list =
 
