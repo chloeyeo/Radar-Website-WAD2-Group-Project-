@@ -15,6 +15,8 @@ class UserProfile(models.Model):
     shareLocation = models.BooleanField(default=False)
     request = models.BooleanField(default=False)
     accept = models.BooleanField(default=False)
+    firstName = models.OneToOneField(User, on_delete=models.CASCADE)
+    lastName = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
