@@ -7,10 +7,13 @@ from radar.models import FriendList, Session, UserProfile
 
 def populate():
 
+    userprof = UserProfile()
+
     user_profile = [
-        {'id': 'jane012', 'firstName': 'Jane', 'lastName': 'Wilkins',
-         'age': 17, 'shareLocation': false } ]
+        {'id': userprof.user, 'firstName': userprof.firstName,
+         'lastName': userprof.lastName
+         'age': userProf.age, 'shareLocation': userProf.shareLocation} ]
 
-    friend_list =
+    friend_list = [ 
 
-    sessions_in_area = 
+    sessions_in_area = {
