@@ -9,7 +9,7 @@ def populate():
     user_profile = [
         {'id': 'charles123', 'firstName': 'charles',
          'lastName': 'dickinson',
-         'age': 17, 'shareLocation': True } ]
+         'age': 17, 'shareLocation': False } ]
 
     # friend_list = []
 
