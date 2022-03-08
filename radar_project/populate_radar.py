@@ -1,27 +1,30 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'radar_project.settings')
 
 import django
 django.setup()
 from radar.models import FriendList, Session, UserProfile
+from django.contrib.auth.models import User
 
 def populate():
     user_profile = [
-        {'id': 'charles123', 'firstName': 'charles',
-         'lastName': 'dickinson',
+        {'id': 'charles123', 'name': 'charles dickinson',
          'age': 17, 'shareLocation': False } ]
 
     # friend_list = []
-
     # sessions_in_area = { }
 
-def add_userProfile(userId, firstName, lastName, age, shareLocation):
-    user = UserProfile.objects.get_or_create(userId = userId,
-                                             firstName = firstName,
-                                             lastName = lastName, age=age)
-    user.shareLocation = shareLocation
-    user.save()
-    return user
+    for user_dict in user_profile:
+        add_userProfile(user_dict)
+        print(f'- {user_dict["name"]}')
 
-def add_friend(userId, firstName, lastName, age, shareLocation=True):
-    friend = FriendList.objects.get_or_create(userId = userId
+def add_userProfile(user_dict):
+    u = UserProfile.objects.get_or_create(
+        user.username = user_dict['name'],
+        age = user_dict['age'], shareLocation = user_dict['shareLocation'])[0]
+    u.save()
+    return u
+
+if __name__ == '__main__':
+    print('Starting Radar population script...')
+    populate()
