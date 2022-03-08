@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from radar.models import UserProfile
 
 
-def homepage1(request):
-    return render(request, 'radar/homepage1.html')
-
-
-def homepage2(request):
-    return render(request, 'radar/homepage2.html')
+def homepage(request):
+    return render(request, 'radar/homepage.html')
 
 
 def friendspage(request):
