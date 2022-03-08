@@ -36,8 +36,5 @@ class Session(models.Model):
     userId_fk = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE,)
 
-    #class Meta:
-        #verbose_name_plural = 'Sessions'
-
     def __str__(self):
         return self.destination
