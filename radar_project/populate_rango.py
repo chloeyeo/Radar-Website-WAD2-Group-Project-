@@ -6,17 +6,14 @@ django.setup()
 from radar.models import FriendList, Session, UserProfile
 
 def populate():
-
-    userprof = UserProfile()
-
     user_profile = [
-        {'id': userprof.user, 'firstName': userprof.firstName,
-         'lastName': userprof.lastName
-         'age': userProf.age, 'shareLocation': userProf.shareLocation} ]
+        {'id': 'charles123', 'firstName': 'charles',
+         'lastName': 'dickinson',
+         'age': 17, 'shareLocation': True } ]
 
-    friend_list = [ 
+    # friend_list = []
 
-    sessions_in_area = {
+    # sessions_in_area = { }
 
 def add_userProfile(userId, firstName, lastName, age, shareLocation):
     user = UserProfile.objects.get_or_create(userId = userId,
