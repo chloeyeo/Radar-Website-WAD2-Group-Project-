@@ -1,17 +1,41 @@
-{% extends 'radar/base.html' %}
-{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <script src="https://kit.fontawesome.com/e65075d43a.js" crossorigin="anonymous"></script>    <title>WAD2</title>
+</head>
+<header>
+    <img class="logo" src="images/logo.png" alt="logo">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#"></a></li>
+        <a class="cta" href="login.html"><button class="loginbtn">Login</button></a>
+    <a class="cta" href="signup.html"><button>Sign Up</button></a>
+      </ul>
+    </nav>
+    
+  </header>
+<body>
+    <div class="fit">
+        <iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.4373053204226!2d-4.292189584771228!3d55.87242859022776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488845d20af469b3%3A0xa3f0620b655e4983!2sUniversity%20of%20Glasgow!5e0!3m2!1sen!2suk!4v1646272270066!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    
+    <form class = "search">
+      <div class = "bar "style=" ">
+        <i class="fa-solid fa-magnifying-glass" style="margin-top: auto; margin-bottom: auto; margin-left: 5%;"></i>
+        <input  class = "bar" type="text" placeholder="Search" name="username" required>
+      </div>
+      <div class="mode"> 
+        <div><i class="fa-solid fa-person-walking fa-2xl"></i></div>
+    </div>
+        <h6>result 1</h6>
+    </form>
 
-{% block title_block %}
-    Home page
-{% endblock %}
-
-{% block nav_items%}
-<li><a href="{% url 'radar:homepage1' %}"></a></li>
-<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
-<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
-{% endblock%}
-
-
-{% block body_block %}
-<iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.4373053204226!2d-4.292189584771228!3d55.87242859022776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488845d20af469b3%3A0xa3f0620b655e4983!2sUniversity%20of%20Glasgow!5e0!3m2!1sen!2suk!4v1646272270066!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-{% endblock %}
+    
+    
+</body>
+</html>

@@ -1,1 +1,62 @@
-<h1>Friends page</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+          <script src="script.js"></script>
+          <script src="https://kit.fontawesome.com/e65075d43a.js" crossorigin="anonymous"></script>    <title>WAD2</title>
+    </head>
+    <header style="padding: 8px 10%;">
+        <img class="logo" src="images/logo.png" alt="logo">
+        <nav>
+          <ul class="nav-links">
+             <div id="dropDown" class="dropdown-content">
+
+                <a class="cta" href="login.html"><button class="myaccount">Friends</button></a>
+                <a class="cta" href="signup.html"><button class="friends">My account</button></a>
+          </ul>
+        </div>
+        </nav>
+        <div class="profile">
+            <img class="dropbtn" src="images/albert.jpg" onclick="dropDown();" style="border-radius: 40px;">
+           
+        </div>
+        
+      </header>
+<body>
+    <div class="fit-vertical">
+        <div class="profile" style="border-radius: 90px; height:90px; width:90px;margin-left: auto; margin-right: auto; margin-top: 2.5%;">
+            <img class="dropbtn" src="images/albert.jpg"  style="border-radius: 40px; cursor:auto;">
+           
+        </div>
+    <div class="fit">
+    <form class = "search" style="margin-left: auto;margin-right: 50px;margin-top: 5%;">
+        <div class = "bar "style=" ">
+          <i class="fa-solid fa-magnifying-glass" style="margin-top: auto; margin-bottom: auto; margin-left: 5%;"></i>
+          <input  class = "bar" type="text" placeholder="Find Friends" name="username" required>
+        </div>
+        <div class="mode"> 
+          <div><i class="fa-solid fa-person-walking fa-2xl"></i></div>
+      </div>
+          <h6>result 1</h6>
+      </form>
+        <table>
+        <tr>
+        <th colspan="3"><h6 style="font-size: 20px; font-style: normal;">Friends</h6></th>
+    </tr>
+    <tr >    
+        <td >
+            <img src="images/albert.jpg"  style="border-radius: 40px; cursor:auto; height: 50px; width: 50px;">
+            </td>
+            <td >result 2</td>
+        <td><i class="fa-solid fa-circle-plus" style="margin-right: 5px;"></i></td>
+        </tr> 
+        </table>
+      </form>
+    </div>
+</body>
+</html>

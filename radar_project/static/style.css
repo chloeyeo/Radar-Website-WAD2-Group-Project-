@@ -5,6 +5,9 @@
     padding: 0%;
 
 }
+i{
+    cursor: pointer;
+}
 
 header{
     
@@ -16,6 +19,15 @@ header{
     background-color: #0D0D0D;
     
 }
+.tallbtn{
+    padding:50px 10px;
+}
+.widebtn{
+    padding: 10px 50px; 
+}
+.eqlbtn{
+    padding: 10px;
+}
 li, a, button{
     
     text-decoration: none;
@@ -26,7 +38,7 @@ li, a, button{
 }
 .frame{
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0px;
     display: block;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 10px rgba(8,7,16,0.6);
@@ -36,6 +48,167 @@ li, a, button{
     margin-bottom: 3%;
     
 }
+ .profile{
+    border-radius: 40px;
+    border: 3px solid rgb(74, 24, 192);
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height:60px;
+    width: 60px;
+    align-items: center;
+
+}
+.profile img:hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease 0s;
+
+}
+.profile img{
+    display: block;
+    height: auto;
+    width: 100% ;
+    cursor: pointer;
+    
+    
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    overflow:hidden;
+    
+  }
+  .dropdown-content {
+    display: none;
+   
+  }
+  .show {
+      display:block;
+      transition: all 0.3s ease 0s;
+
+}
+
+  
+
+.transportation{
+    flex-direction: column;
+    margin-top: 2%;
+    margin-bottom: auto;
+    margin-left: 2%;
+    width: 5%;
+    height: 10%;
+    display: flex;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+    padding: 0px 0px;
+}
+img{
+    width: 30px;
+    height: 30px;   
+    margin: 0%;
+    background-size: cover;
+}
+.bar{
+    height:10%;border: 1px solid #DDD;
+    display: flex; 
+    justify-content: space-between; 
+    border-radius: 40px;
+    height: 40px;
+}
+.mode{
+    margin: 25px;
+    color: #000000;
+    
+}
+
+
+.mode div:hover{
+    cursor: pointer;
+    color:#303030
+}
+.mode div:active{
+    color: #5B48D9;
+}
+
+
+.fit{
+    display: flex;
+    justify-content: space-between;
+}
+.fit-vertical{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.search{
+    width: 20%;
+    height: 40%;
+    display: block;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+    padding: 30px 35px;
+    margin-left: 2%;
+    margin-right: auto;
+    
+}
+
+
+.search input{
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+    margin-right: auto;
+    border: 0px solid rgba(255,255,255,0.1);
+    text-align: left;
+}
+.search input[type='text']::placeholder
+{   
+    text-align: left;      /* for Chrome, Firefox, Opera */
+}
+
+.search input i{
+    margin-left: 2%;
+    margin-top: 0%;
+    
+}
+.search h6{
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 10%;
+
+}
+table{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top:5%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+}
+th{
+    border-bottom: 2px solid rgba(8,7,16,0.6);
+}
+td{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.menu-container {
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
 
 .logo{
     cursor: pointer;
@@ -57,6 +230,7 @@ li, a, button{
     color: #ffffff81;
 }
 
+
 button{
     border-radius: 10px;
     background-color: rgba(11, 217,83, 1);
@@ -72,6 +246,22 @@ button{
 .loginbtn:hover{
     background-color: rgba(5, 84,242, 0.5);    
 }
+.myaccount{
+    background-color: rgba(239, 135, 76,1);    
+    margin-right:25px;
+    margin-left:25px;
+}
+.myaccount:hover{
+    background-color: rgba(239, 135, 76,0.5);    
+}
+.friends{
+    background-color: rgba(91, 72, 217, 1); 
+    margin-right: 0px;
+}
+.friends:hover{
+    background-color: rgba(91, 72, 217, 0.5);   
+}
+
 button:hover{
     background-color: rgba(11, 217,83, 0.5);
 
