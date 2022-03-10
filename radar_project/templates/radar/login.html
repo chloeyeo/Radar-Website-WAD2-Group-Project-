@@ -16,7 +16,18 @@ Login
 
 
 {% block body_block %}
-<form>  
+<form id="login_form" method="post" action="{% url 'radar:login' %}">
+	<h3>Login Here</h3>
+	{% csrf_token %}
+	<label for="username">Username</label>
+	<input type="text" placeholder="Username" name="username" required>
+	
+	<label for="password">Password</label>
+	<input type="password" placeholder="Password" name="password" required>
+	
+	<button type="submit" class="submit">Login</button>
+</form>
+<!--<form>  
   <h3>Login Here</h3>
 
   <label for="username">Username</label>
@@ -31,5 +42,5 @@ Login
   <div class="go"><i class="fab fa-google"></i>  Google</div>
   <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
 </div>
-</form>
+</form>-->
 {% endblock %}

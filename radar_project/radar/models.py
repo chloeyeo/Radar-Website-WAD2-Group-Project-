@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
     host = models.BooleanField(default=False)
-    age = models.IntegerField(default=0)
+    age = models.IntegerField(default=18)
     shareLocation = models.BooleanField(default=False)
     request = models.BooleanField(default=False)
     accept = models.BooleanField(default=False)

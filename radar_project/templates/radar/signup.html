@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title_block %}
-Signup
+	Signup
 {% endblock %}
 
 {% block nav_items%}
@@ -17,15 +17,31 @@ Signup
       
         
 {% block body_block %}
-<form>  
-  <h3>Sign Up Here</h3>
+{%if registered%}
+<strong>Thank you for registering with us!</strong>
+<a href="{% url 'radar:homepage1' %}">Return to the homepage.</a><br />
+{% else %}
+	
+<form id="user_form" method="post" action="{% url 'radar:signup' %}" enctype="multipart/form-data">
+	<h3>Sign up here </h3>
+	{% csrf_token %}
+	{{ user_form.as_p }}
+	{{ profile_form.as_p }}
+	<button type="submit" class="signup" >Sign Up</button>
+</form>
+{% endif %}
+<!--<form>  
+	<h3>Sign Up Here</h3>
 
   <label for="username"></label>
-  <input type="password" placeholder="Email" name="password" required>
-
-  <input type="password" placeholder="Full Name" name="password" required>
-
+  
   <input type="text" placeholder="Username" name="username" required>
+  
+  <input type="text" placeholder="First Name" name="first_name" required>
+  
+  <input type="text" placeholder="Last Name" name="last_name" required>
+  
+  <input type="text" placeholder="Email" name="email" required>
   
   <input type="password" placeholder="Password" name="password" required>
 
@@ -35,6 +51,6 @@ Signup
   <div class="go"><i class="fab fa-google"></i>  Google</div>
   <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
 </div>
-</form>
+</form>-->
 
 {% endblock %}
