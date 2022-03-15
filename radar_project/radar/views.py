@@ -5,6 +5,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from radar.models import Post, Category
+
+def show_category(request, category_name_slug):
+    context_dict = {}
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        posts = Post.objects.filter(category=category)
+        context_dict['posts'] = posts
+        context_dict['category'] = category
+    except Category.DoesNotExist:
+        context_dict['category'] = None
+        context_dict['pages'] = None
+    return render(request, 'radar/category.html', context=context_dict)
 
 
 
