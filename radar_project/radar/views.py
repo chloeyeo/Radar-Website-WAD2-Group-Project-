@@ -24,9 +24,6 @@ def show_category(request, category_name_slug):
 def homepage1(request):
     return render(request, 'radar/homepage1.html')
 
-@login_required
-def homepage2(request):
-    return render(request, 'radar/homepage2.html')
 
 @login_required
 def friendspage(request):
