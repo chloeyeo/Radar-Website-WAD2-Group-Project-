@@ -7,8 +7,12 @@
 
 {% block nav_items%}
 <li><a href="{% url 'radar:homepage1' %}"></a></li>
-<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
-<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% if user.is_authenticated %}
+	<a class="cta" href="{% url 'radar:logout' %}"><button>Logout</button></a>
+{% else %}	
+	<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
+	<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% endif %}
 {% endblock%}
 
 
