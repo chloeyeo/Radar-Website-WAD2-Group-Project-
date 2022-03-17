@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 from django.contrib.auth.models import User
@@ -13,10 +14,18 @@ class UserProfile(models.Model):
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
     age = models.IntegerField(default=18)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.user.username)
+        super(UserProfile, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name_plural = 'UserProfiles'
 
     def __str__(self):
         return self.user.username
-    
+
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -34,6 +43,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=128)
@@ -43,18 +53,17 @@ class Post(models.Model):
     image = models.ImageField()
     review = models.IntegerField(default=5)
     comments = ListCharField(
-        base_field = models.CharField(max_length=5000),
+        base_field=models.CharField(max_length=5000),
         max_length=(5000)
     )
     slug = models.SlugField(unique=True)
-    
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
-        
+
     class Meta:
         verbose_name_plural = 'posts'
 
     def __str__(self):
         return self.title
-    
