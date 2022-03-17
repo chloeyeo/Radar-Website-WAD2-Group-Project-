@@ -1,1 +1,11 @@
-<h1>Account details</h1>
+{% load staticfiles %}
+
+{% block body_block %}
+
+{% if user %}
+<h1>{{user.user.username}} details</h1>
+{% else %}
+The specified user does not exist.
+{% endif %}
+
+{% endblock %}
