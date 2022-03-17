@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{% static 'style.css'%}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <script src="script.js"></script>
+        <script src="https://kit.fontawesome.com/e65075d43a.js" crossorigin="anonymous"></script>
         <title>
             Radar -
             {% block title_block %}
@@ -27,6 +29,8 @@
             </ul>
         </nav>
         {% block btn%}
+        {% endblock%}
+        {% block otherHeaderElements%}
         {% endblock%}
     </header>
 
