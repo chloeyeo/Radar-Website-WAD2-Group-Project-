@@ -85,7 +85,6 @@ def account(request, current_user_slug):
     try:
         userProfile = UserProfile.objects.get(slug=current_user_slug)
         context_dict['user'] = userProfile
-        print(userProfile.user.username)
     except UserProfile.DoesNotExist:
         context_dict['user'] = None
     return render(request, 'radar/account.html', context=context_dict)
@@ -95,3 +94,7 @@ def account(request, current_user_slug):
 def user_logout(request):
     logout(request)
     return redirect(reverse('radar:homepage1'))
+
+
+def testview(request):
+    return render(request, 'radar/viewPost.html')

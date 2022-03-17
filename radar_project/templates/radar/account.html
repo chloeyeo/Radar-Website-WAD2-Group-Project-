@@ -1,9 +1,47 @@
+{% extends 'radar/base.html' %}
 {% load staticfiles %}
+{% block title_block %}
+Account
+{% endblock %}
+
+{% block nav_items%}
+<div id="dropDown" class="dropdown-content">
+    <a class="cta" href="login.html"><button class="myaccount">Friends</button></a>
+    <a class="cta" href="signup.html"><button class="friends">My account</button></a>
+</div>
+{% endblock%}
+
+{% block otherHeaderElements%}
+<div class="profile">
+    <img class="dropbtn" src="images/albert.jpg" onclick="dropDown();" style="border-radius: 40px;">
+</div>
+{% endblock%}
+
 
 {% block body_block %}
-
 {% if user %}
-<h1>{{user.user.username}} details</h1>
+
+<!-- user image -->
+<div class="fit-vertical">
+    <div class="profile"
+        style="border-radius: 90px; height:90px; width:90px;margin-left: auto; margin-right: auto; margin-top: 2.5%;">
+        <img class="dropbtn" src="images/albert.jpg" style="border-radius: 40px; cursor:auto;">
+
+    </div>
+
+    <!-- user data, i don't know why this is a form -->
+<form>
+    <h3>{{user.user.username}} details</h3>
+    <input type="text" placeholder={{user.user.username}} name="username" required>
+
+    <input type="text" placeholder={{user.user.email}} name="text" required>
+
+    <input type="number" placeholder={{user.age}} name="age" required>
+
+    <button type="submit" class="signup">Update</button>
+</form>
+</div>
+
 {% else %}
 The specified user does not exist.
 {% endif %}
