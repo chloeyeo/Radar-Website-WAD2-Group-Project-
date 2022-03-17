@@ -20,6 +20,9 @@
     </head>
 
     <header>
+        <!-- added different blocks basing on the order of some pages -->
+        {% block headerElementsBeforeNav%}
+        {% endblock%}
         <img class="logo" src="{% static 'images/logo.jpg' %}" width = 80 height="60" alt="logo">
         <nav>
             <ul class="nav-links">
@@ -30,8 +33,9 @@
         </nav>
         {% block btn%}
         {% endblock%}
-        {% block otherHeaderElements%}
+        {% block headerElementsAfterNav%}
         {% endblock%}
+        
     </header>
 
     <body>

@@ -15,7 +15,28 @@
 {% endif %}
 {% endblock%}
 
+{% block headerElementsBeforeNav%}
+<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+{% endblock%}
+<!-- side nav is not in the header nor the body -->
+<div id="mySidenav" class="sidenav">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<a href="#">Cartoons</a>
+	<a href="#">Tv Shows</a>
+	<a href="#">Movies</a>
+	<a href="#">Video Games</a>
+</div>
+<div id="main">
+
+</div>
+
+
 
 {% block body_block %}
-<iframe class="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2238.4373053204226!2d-4.292189584771228!3d55.87242859022776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488845d20af469b3%3A0xa3f0620b655e4983!2sUniversity%20of%20Glasgow!5e0!3m2!1sen!2suk!4v1646272270066!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<input id="bar" class="bar" type="text" placeholder="Search" name="username" required>
 {% endblock %}
+
+
+
+
+

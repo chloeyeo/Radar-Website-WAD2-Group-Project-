@@ -97,4 +97,4 @@ def user_logout(request):
 
 
 def testview(request):
-    return render(request, 'radar/myaccount.html')
+    return render(request, 'radar/index1.html')
