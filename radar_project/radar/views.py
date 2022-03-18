@@ -96,5 +96,9 @@ def user_logout(request):
     return redirect(reverse('radar:homepage1'))
 
 
-def testview(request):
-    return render(request, 'radar/viewPost.html')
+def addpage(request):
+    return render(request, 'radar/addpage.html')
+
+
+def viewpage(request):
+    return render(request, 'radar/viewpage.html')
