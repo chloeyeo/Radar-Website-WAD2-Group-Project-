@@ -14,6 +14,7 @@ window.onclick = function(event){
 }
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
+  console.log("I have been clicked")
 }
 
 function closeNav() {

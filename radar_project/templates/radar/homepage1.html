@@ -16,21 +16,8 @@
 {% endblock%}
 
 {% block headerElementsBeforeNav%}
-<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+<button onclick= "openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
 {% endblock%}
-<!-- side nav is not in the header nor the body -->
-<div id="mySidenav" class="sidenav">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a href="#">Cartoons</a>
-	<a href="#">Tv Shows</a>
-	<a href="#">Movies</a>
-	<a href="#">Video Games</a>
-</div>
-<div id="main">
-
-</div>
-
-
 
 {% block body_block %}
 <input id="bar" class="bar" type="text" placeholder="Search" name="username" required>

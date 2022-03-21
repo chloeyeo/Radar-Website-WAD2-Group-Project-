@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{% static 'style.css'%}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-        <script src="script.js"></script>
+        <script src="{% static 'script.js' %}"></script>
         <script src="https://kit.fontawesome.com/e65075d43a.js" crossorigin="anonymous"></script>
         <title>
             Radar -
@@ -34,9 +34,19 @@
         {% block btn%}
         {% endblock%}
         {% block headerElementsAfterNav%}
-        {% endblock%}s
+        {% endblock%}
         
     </header>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Cartoons</a>
+        <a href="#">Tv Shows</a>
+        <a href="#">Movies</a>
+        <a href="#">Video Games</a>
+    </div>
+    <div id="main">
+    
+    </div>
 
     <body>
             {% block body_block %}
