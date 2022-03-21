@@ -26,7 +26,7 @@
         <!-- added different blocks basing on the order of some pages -->
         {% block headerElementsBeforeNav%}
         {% endblock%}
-        <img class="logo" src="{% static 'images/logo.jpg' %}" width = 80 height="60" alt="logo">
+        <a href="{% url 'radar:homepage1' %}"><img class="logo" src="{% static 'images/logo.jpg' %}" width=80 height="60" alt="logo"></a>
         <nav>
             <ul class="nav-links">
                 {% block nav_items%}
@@ -42,10 +42,10 @@
     </header>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Cartoons</a>
-        <a href="#">Tv Shows</a>
-        <a href="#">Movies</a>
-        <a href="#">Video Games</a>
+        <a href="/radar/category/cartoon">Cartoons</a>
+        <a href="/radar/category/anime">Anime</a>
+        <a href="/radar/category/movie">Movies</a>
+        <a href="/radar/category/video_games">Video Games</a>
     </div>
     <div id="main">
     

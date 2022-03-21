@@ -13,7 +13,7 @@ def populate():
         {'title' : "Rupanzel's Tower",'views':17, 'likes':12, 'image': "", 'description' : "Rapunzel's Tower is a central location in Disney's 2010 animated feature film, Tangled. It is a secluded tower hidden deep within the woods outside of the kingdom Corona. Shortly after her birth, Princess Rapunzel was kidnapped by a woman named Mother Gothel, and locked away in the tower as an unknowing prisoner for eighteen years."},
         {'title' : "Gru's House" , 'views':46, 'likes':42, 'image': "", 'description' :"Gru's House is home of Felonius Gru, Lucy Wilde, Margo, Edith, Agnes, and also to the Minions, Dr. Nefario and Dru. Gru's lab is located right underneath. Unlike the neighboring track houses (homes that appear similar to others), it is made out of brick that is painted eerie black and a roof that is painted purple. It is also somewhat considerably larger. One similiarity it does share is that it is a two-story house."},
     ]
-    
+
     anime = [
         {'title' : "Hawk's mum" ,'views':19, 'likes':14, 'image': "", 'description':'After rebuilding the Boar Hat, Hawk Mama is responsible for transporting the Seven Deadly Sins and Elizabeth to their next mission in Corand.'},
         {'title' : 'Avatar Temple' ,'views':23, 'likes':35, 'image': "", 'description' :"An Avatar Temple is a shrine built in honor of the Avatar. Each building bears a spiritual connection with the Avatar Spirit and all of its past incarnations, and as such is regarded as a sacrosanct dwelling. Some nations take this reverence for the Avatar Temple to an extreme, only permitting their respective religious authority to have regular access. For example, the Avatar Temple of the Air Nomads was open exclusively to the elder monks,[1] and only Fire Sages resided in the Fire Temple.[2] However, the Avatar is exempt from these restrictions."},
@@ -28,12 +28,21 @@ def populate():
         {'title' : 'Atlantis' , 'views':59, 'likes':50, 'image': "", 'description' :"Atlantis, a fabulously wealthy and advanced civilization, was swept into the sea and lost forever."},
     ]
 
+    video_games = [
+        {'title' : '1' , 'views':54, 'likes':35, 'image': "",'description' : 'game'},
+        {'title' : '2' , 'views':32, 'likes':25, 'image': "",'description':'game'},
+        {'title' : '3' , 'views':37, 'likes':29, 'image': "",'description' : "game"},
+        {'title' : '4' , 'views':59, 'likes':50, 'image': "", 'description' :"game"},
+    ]
+
+
     categories = {
         'cartoon' : {'posts' : cartoon},
         'anime' : {'posts' : anime},
         'movie' : {'posts' : movie},
+        'video_games' : {'posts' : video_games},
     }
-    
+
     for category, categoryData in categories.items():
         c = add_category(category)
         for p in categoryData['posts']:
@@ -58,6 +67,6 @@ def add_post(category, title, likes, views ,description):
 
 
 if __name__ == '__main__':
-    
+
     print('Starting Radar population script...')
     populate()
