@@ -17,12 +17,19 @@ def show_category(request, category_name_slug):
         context_dict['category'] = category
     except Category.DoesNotExist:
         context_dict['category'] = None
-        context_dict['pages'] = None
+        context_dict['posts'] = None
     return render(request, 'radar/category.html', context=context_dict)
 
 
 def homepage1(request):
-    return render(request, 'radar/homepage1.html')
+    context_dict = {}
+    try:
+        posts = Post.objects.all()
+        print(posts)
+        context_dict['posts'] = posts
+    except:
+        context_dict['posts'] = None
+    return render(request, 'radar/homepage1.html', context=context_dict)
 
 
 def user_login(request):
