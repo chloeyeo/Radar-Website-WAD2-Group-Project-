@@ -23,28 +23,27 @@
 <input id="bar" class="bar" style="width: 80%; margin: 20px;" type="text" placeholder="Search" name="username" required>
 <div>
 	{% if posts %}
-	<ul>
-		{% for post in posts %}
-		<div class="card mb-3" style="max-width: 80%;">
-			<div class="row g-0">
-				<div class="col-md-4">
-					<!-- this allows us to use images as a source -->
-					<img src="{{post.image.url}}" class="img-fluid rounded-start" alt="{{ post.title}}" style="width: 100%;">
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title">{{post.title}}</h5>
-						<p class="card-text">{{post.description}}</p>
-						<p class="card-text"><small class="text-muted">Likes : {{ post.likes }}</small></p>
-						<p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
-						<button type="button" class="btn btn-outline-dark">Like</button>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% for post in posts %}
+				<div class="col">
+					<div class="card">
+					
+							<img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}}" style = "height: 20em">
+						
+						<div class="card-body">
+							<h5 class="card-title">{{post.title}}</h5>
+							<p class="card-text" style = "overflow:hidden; text-overflow: clip; white-space: nowrap;">{{post.description}}</p>
+							<p class="card-text"><small class="text-muted">Likes : {{ post.likes }}</small></p>
+							<p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+						</div>
+						<div class="card-footer">
+							<button type="button" class="btn btn-outline-dark">Like</button>
+						</div>
 					</div>
 				</div>
+				{% endfor %}
+				
 			</div>
-		</div>
-		
-		{% endfor %}
-	</ul> 
 	{% else %}
 	<strong>There are no posts present in your data base.</strong> 
 	{% endif %}
