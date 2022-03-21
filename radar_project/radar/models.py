@@ -50,7 +50,7 @@ class Post(models.Model):
     description = models.CharField(max_length=5000)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='images/')
     review = models.IntegerField(default=5)
     comments = ListCharField(
         base_field=models.CharField(max_length=5000),

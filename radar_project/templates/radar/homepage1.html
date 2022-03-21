@@ -28,7 +28,8 @@
 		<div class="card mb-3" style="max-width: 80%;">
 			<div class="row g-0">
 				<div class="col-md-4">
-					<img src="{{ MEDIA_URL }}cat.jpg" class="img-fluid rounded-start" alt="{{ post.title}}" style="width: 100%;">
+					<!-- this allows us to use images as a source -->
+					<img src="{{post.image.url}}" class="img-fluid rounded-start" alt="{{ post.title}}" style="width: 100%;">
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">

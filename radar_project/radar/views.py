@@ -25,7 +25,6 @@ def homepage1(request):
     context_dict = {}
     try:
         posts = Post.objects.all()
-        print(posts)
         context_dict['posts'] = posts
     except:
         context_dict['posts'] = None
