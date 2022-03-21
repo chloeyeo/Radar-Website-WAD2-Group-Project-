@@ -1,24 +1,47 @@
-{% extends 'radar/base.html' %}
-{% load staticfiles %}
-
-<!-- This is not loading well, I'd need you to check it out before i continue -->
-
-{% block title_block %}
-view post
-{% endblock %}
-
-{% block headerElementsBeforeNav%}
-<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
-{% endblock%}
-
-{% block nav_items%}
-<ul class="nav-links">
-        <button style="background-color: #B000FF;" onclick="openSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <li><a href="#"></a></li>
-        <a class="cta" href="login.html"><button class="loginbtn">Login</button></a>
-    <a class="cta" href="signup.html"><button>Sign Up</button></a>
-{% endblock%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <script src="https://kit.fontawesome.com/e65075d43a.js" crossorigin="anonymous"></script>    <title>WAD2</title>
+</head>
+<header style="padding: 0px; padding-left: 20px;padding-right: 20px;">
+  
+  <button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
  
+    <img class="logo" src="images/logo.jpg" alt="logo">
+    <div class="fit">
+    <input  id="bar" class = "bar" type="text" placeholder="Search" name="username" required>
+    <button style="background-color: #B000FF; border-radius: 0px; height: 40px; margin-top: 2.5%; "><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <nav>
+      <ul class="nav-links" > 
+                
+        <li>
+        <div class="profile">
+            <img class="dropbtn" src="images/albert.jpg" onclick="dropDown()" style="border-radius: 40px;">
+            <ul id ="dropdownprof" class="dropdownprof">
+                <li ><a href="myaccount.html">Account</a> <p></p>  <i class="fa-solid fa-user"></i></li>
+                <li><a href="addPost.html">Add post</a><p></p><i class="fa-solid fa-circle-plus"></i></li>
+            </div>
+        </div>
+        </li>
+    
+      </ul>
+
+      
+
+    </nav>
+    
+  </header>
+  
+
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="#">Cartoons</a>
@@ -27,28 +50,34 @@ view post
     <a href="#">Video Games</a>
   </div>
   <div id="main">
-      </div>
 
+<body>
 
-  {% block body_block %}
-  <div class="fit">
-    <form style="height: 400px;">
-      <img></img>
-    </form>
-    <div class="fit-vertical" style="margin-right: 20%; ">
-      <form style="width: 100%;">
-        <textarea style="resize:none; background-color: rgb(236, 236, 236); width: 100%; height: 100%;"></textarea>
-      </form>
-      <form style="width: 100%;margin-left: 0%; ">
-        <div class="fit">
-          <img src="images/albert.jpg" style="margin-left:0;border-radius: 40px; cursor:auto; height: 50px; width: 50px;">
-          <input type="text" style="width:100%; border-radius: 10px;"></input>
+    <div class="fit" style="margin-top: 3%;">
+        <form style="height: 400px;">
+          <img src="images/albert.jpg" class="image-card" ></img> 
+        </form>
+        <div class="fit-vertical" style="margin-right: 20%; ">
+        <form style="width: 100%;">
+            <textarea style="resize:none; background-color: rgb(236, 236, 236); width: 100%; height: 100%;"></textarea>
+        </form>
+        <form style="width: 100%;margin-left: 0%; ">
+              <ul style="list-style-type: none;">
+                <li>
+                  <div class="fit">
+            <img src="images/albert.jpg"  style="margin-left:0;border-radius: 40px; cursor:auto; height: 50px; width: 50px;">
+            <input type="text" style="width:100%; border-radius: 10px;" ></input>
+          </div>
+            </li>
+            
+            </ul>
+            
+        </form>
+
+        <button>Submit</button>
         </div>
-      </form>
-  
-      <button>Submit</button>
+        </form>
     </div>
-    </form>
-  </div>
 
-  {% endblock %}
+
+</body>
