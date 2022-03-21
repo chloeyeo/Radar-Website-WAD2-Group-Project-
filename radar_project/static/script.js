@@ -32,5 +32,8 @@ function openSearch(){
     
   x=0;
   }
+}
 
+function add_like(){
+  document.getElementById("post_like")
 }

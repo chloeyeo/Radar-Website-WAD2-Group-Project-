@@ -1,17 +1,36 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Radar</title>
-    </head>
+{% extends 'radar/base.html' %}
+{% load staticfiles %}
 
-    <body>
+{% block title_block %}
+{{ category.name }}
+{% endblock %}
+
+<!-- need to know what nav items are supposed to be shown here -->
+
+{% block body_block %}
         <div>
         {% if category %}
             <h1>{{ category.name }}</h1>
             {% if posts %}
             <ul>
                 {% for post in posts %}
-                <li>{{ post.title }}</li>
+                <div class="card mb-3" style="max-width: 80%;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ MEDIA_URL }}cat.jpg" class="img-fluid rounded-start" alt="{{ post.title}}"
+                                style="width: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{post.title}}</h5>
+                                <p class="card-text">{{post.description}}</p>
+                                <p class="card-text"><small class="text-muted">Likes : {{ post.likes }}</small></p>
+                                <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+                                <button type="button" class="btn btn-outline-dark">Like</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
             </ul>
             {% else %}
@@ -21,5 +40,5 @@
             The specified category does not exist.
         {% endif %}
         </div>
-    </body>
-</html>
+    
+{% endblock %}
