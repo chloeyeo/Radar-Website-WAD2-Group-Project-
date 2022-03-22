@@ -1,0 +1,78 @@
+{% extends 'radar/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+Search results
+{% endblock %}
+
+{% block headerElementsBeforeNav%}
+<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+{% endblock%}
+
+{% block btn%}
+<form class="d-flex p-0 m-2" action="{% url 'radar:search_results'%}" method=GET>
+    {% csrf_token %}
+    <input type="search" class="form-control" placeholder="Search posts" aria-label="Search" name="searched">
+    <button type="submit" class="btn" style="background-color: #B000FF; border-radius: 0px; "><i
+            class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+{% endblock%}
+
+
+{% block nav_items%}
+<li><a href="{% url 'radar:homepage1' %}"></a></li>
+{% if user.is_authenticated %}
+<div class="dropdown" style="overflow: visible !important;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <!-- needs to be edited, I got loads of issues trying to use the implementation i found. Mustafa could help me with this using the given buttons and functionality -->
+        Dropdown
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><a class="cta" href="{% url 'radar:homepage1' %}"><button class="dropdown-item" type="button">Add
+                    post</button></a></li>
+        <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
+                    type="button">Account</button></a></li>
+        <li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign
+                    out</button></a></li>
+    </ul>
+</div>
+
+{% else %}
+<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
+<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% endif %}
+{% endblock%}
+
+{% block body_block %}
+
+<div>
+    {% if posts %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card">
+
+                <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}}" style="height: 20em">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text" style="overflow:hidden; text-overflow: clip; white-space: nowrap;">
+                        {{post.description}}</p>
+                    <p class="card-text"><small class="text-muted">Likes : {{ post.likes }}</small></p>
+                    <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-dark">Like</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% else %}
+    <strong>No search results for '{{searched}}' .</strong>
+    {% endif %}
+</div>
+
+{% endblock %}

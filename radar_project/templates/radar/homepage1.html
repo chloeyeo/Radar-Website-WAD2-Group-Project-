@@ -10,11 +10,12 @@
 {% endblock%}
 
 {% block btn%}
-<div class="fit">
-	<input id="bar" class="bar" type="text" placeholder="Search" name="username" required>
-	<button style="background-color: #B000FF; border-radius: 0px; height: 40px; margin-top: 2.5%; "><i
-			class="fa-solid fa-magnifying-glass"></i></button>
-</div>
+	<form class = "d-flex p-0 m-2" action="{% url 'radar:search_results'%}" method=GET>
+		{% csrf_token %}
+		<input type="search" class = "form-control" placeholder="Search posts" aria-label="Search" name = "searched">
+		<button type = "submit" class="btn" style="background-color: #B000FF; border-radius: 0px; "><i
+				class="fa-solid fa-magnifying-glass"></i></button>
+	</form>
 {% endblock%}
 
 
