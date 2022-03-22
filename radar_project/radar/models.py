@@ -46,15 +46,16 @@ class Category(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=128)
-    description = models.CharField(max_length=5000)
+    description = models.TextField(max_length=5000)
     views = models.IntegerField(default=0)
     # many to many because we want to register what user is liking!
     likes = models.ManyToManyField(User, related_name="posts")
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', blank = True)
     review = models.IntegerField(default=5)
     comments = ListCharField(
         base_field=models.CharField(max_length=5000),
-        max_length=(5000)
+        max_length=(5000), 
+        blank = True
     )
     slug = models.SlugField(unique=True)
 
