@@ -23,12 +23,26 @@ def show_category(request, category_name_slug):
 
 def homepage1(request):
     context_dict = {}
+    current_user = request.user
+
+    try:
+        posts = Post.objects.all()
+        context_dict['current_user'] = current_user.username.lower()
+
+        context_dict['posts'] = posts
+    except:
+        context_dict['posts'] = None
+    return render(request, 'radar/homepage1.html', context=context_dict)
+
+
+def homepage(request):
+    context_dict = {}
     try:
         posts = Post.objects.all()
         context_dict['posts'] = posts
     except:
         context_dict['posts'] = None
-    return render(request, 'radar/homepage1.html', context=context_dict)
+    return render(request, 'radar/header.html', context=context_dict)
 
 
 def user_login(request):
@@ -84,7 +98,7 @@ def signup(request):
                                                          'registered': registered})
 
 
-# @login_required
+@ login_required
 def account(request, current_user_slug):
     context_dict = {}
     current_user = request.user
@@ -96,7 +110,7 @@ def account(request, current_user_slug):
     return render(request, 'radar/account.html', context=context_dict)
 
 
-@login_required
+@ login_required
 def user_logout(request):
     logout(request)
     return redirect(reverse('radar:homepage1'))

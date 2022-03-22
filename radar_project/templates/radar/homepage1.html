@@ -5,22 +5,60 @@
     Home page
 {% endblock %}
 
+{% block headerElementsBeforeNav%}
+<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+{% endblock%}
+
+{% block btn%}
+<div class="fit">
+	<input id="bar" class="bar" type="text" placeholder="Search" name="username" required>
+	<button style="background-color: #B000FF; border-radius: 0px; height: 40px; margin-top: 2.5%; "><i
+			class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+{% endblock%}
+
+
 {% block nav_items%}
 <li><a href="{% url 'radar:homepage1' %}"></a></li>
 {% if user.is_authenticated %}
-	<a class="cta" href="{% url 'radar:logout' %}"><button>Logout</button></a>
+	<div class="dropdown" style="overflow: visible !important;">
+		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+			aria-expanded="false">
+			<!-- needs to be edited, I got loads of issues trying to use the implementation i found. Mustafa could help me with this using the given buttons and functionality -->
+			Dropdown
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+			<li><a class="cta" href="{% url 'radar:homepage1' %}"><button class="dropdown-item" type="button">Add post</button></a></li>
+			<li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item" type="button">Account</button></a></li>
+			<li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign out</button></a></li>
+		</ul>
+	</div>
+	<!-- <li> -->
+		<!-- the image will be the image of the user -->
+		<!-- this isn't opening -->
+		<!-- <div class="profile">
+			<img class="dropbtn" src="{{ MEDIA_URL }}images/albert.jpg" onclick="dropDown()" style="border-radius: 40px;">
+			<ul id="dropdownprof" class="dropdownprof">
+				<li><a href="myaccount.html">Account</a>
+					<p></p> <i class="fa-solid fa-user"></i>
+				</li>
+				<li><a href="addPost.html">Add post</a>
+					<p></p><i class="fa-solid fa-circle-plus"></i>
+				</li>
+				<li><a class="cta" href="{% url 'radar:logout' %}"><button>Logout</button></a></li>
+			</ul>
+		</div>
+		</div>
+	</li> -->
+	
 {% else %}
 	<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
 	<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
 {% endif %}
 {% endblock%}
 
-{% block headerElementsBeforeNav%}
-<button onclick= "openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
-{% endblock%}
-
 {% block body_block %}
-<input id="bar" class="bar" style="width: 80%; margin: 20px;" type="text" placeholder="Search" name="username" required>
+
 <div>
 	{% if posts %}
 			<div class="row row-cols-1 row-cols-md-3 g-4">
