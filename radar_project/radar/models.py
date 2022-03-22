@@ -30,7 +30,6 @@ class UserProfile(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -49,7 +48,8 @@ class Post(models.Model):
     title = models.CharField(max_length=128)
     description = models.CharField(max_length=5000)
     views = models.IntegerField(default=0)
-    likes = models.IntegerField(default=0)
+    # many to many because we want to register what user is liking!
+    likes = models.ManyToManyField(User, related_name="posts")
     image = models.ImageField(upload_to='images/')
     review = models.IntegerField(default=5)
     comments = ListCharField(
@@ -57,6 +57,13 @@ class Post(models.Model):
         max_length=(5000)
     )
     slug = models.SlugField(unique=True)
+
+    total_likes = models.IntegerField(default=0)
+
+    # allows us to count number of likes
+    def set_total_likes(self):
+        self.total_likes = self.likes.count()
+        # return self.likes.count()
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
