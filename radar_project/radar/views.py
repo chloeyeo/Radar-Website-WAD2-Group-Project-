@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
-from radar.forms import UserForm, UserProfileForm
+from radar.forms import UserForm, UserProfileForm, PostForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
@@ -85,7 +85,7 @@ def user_login(request):
                 login(request, user)
                 return redirect(reverse('radar:homepage1'))
             else:
-                return HttpResponse("Your Rango account is disabled.")
+                return HttpResponse("Your Radar account is disabled.")
         else:
             print(f"Invalid login details: {username}, {password}")
             return HttpResponse("Invalid login details supplied.")
@@ -146,3 +146,27 @@ def user_logout(request):
 
 def testview(request):
     return render(request, 'radar/viewPost.html')
+    
+@ login_required
+def add_post(request, category_name_slug):
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+    except Category.DoesNotExist:
+        category = None
+    form = PostForm
+    
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        
+        if form.is_valid():
+            if category:
+                post = form.save(commit=False)
+                post.category = category
+                post.views = 0
+                page.save()
+                
+                return redirect(reverse('radar:homepage1'))
+        else:
+            print(form.errors)
+    context_dict = {'form': form, 'category': category}
+    return render(request, 'radar/addPost.html', context=context_dict)

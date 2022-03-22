@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from radar.models import UserProfile
+from radar.models import UserProfile, Post
 from django import forms
 
 # Please update basing on the requirements of our implementation
@@ -17,3 +17,8 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('age','picture')
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'description', 'image')
