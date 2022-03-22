@@ -1,11 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
 from radar.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from radar.models import Post, Category, UserProfile
+from django.http import HttpResponseRedirect
+
+
+def like_post(request, pk):
+    post = get_list_or_404(Post, id=request.POST.get('post_id'))[0]
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('homepage1'))
 
 
 def show_category(request, category_name_slug):
@@ -28,13 +35,29 @@ def homepage1(request):
     try:
         posts = Post.objects.all()
         context_dict['current_user'] = current_user.username.lower()
-
+        for post in posts:
+            post.set_total_likes()
+            print(post.total_likes)
         context_dict['posts'] = posts
+
     except:
         context_dict['posts'] = None
     return render(request, 'radar/homepage1.html', context=context_dict)
 
 
+def search_results(request):
+    context_dict = {}
+    if request.method == 'GET':
+        searched = request.GET['searched']
+        posts = Post.objects.filter(title__contains=searched)
+        context_dict['searched'] = searched
+        context_dict['posts'] = posts
+        return render(request, 'radar/search_results.html', context=context_dict)
+    else:
+        return render(request, 'radar/search_results.html', context=context_dict)
+
+
+# this will be implemented to be the only home page
 def homepage(request):
     context_dict = {}
     try:
@@ -101,7 +124,6 @@ def signup(request):
 @ login_required
 def account(request, current_user_slug):
     context_dict = {}
-    current_user = request.user
     try:
         userProfile = UserProfile.objects.get(slug=current_user_slug)
         context_dict['user'] = userProfile

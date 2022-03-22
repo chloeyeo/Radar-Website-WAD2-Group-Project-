@@ -12,6 +12,8 @@ urlpatterns = [
     path('account/<slug:current_user_slug>/', views.account, name='account'),
     path('logout/', views.user_logout, name='logout'),
     path('test/', views.testview, name='test'),
+    path('like_post/<int:pk>', views.like_post, name='like_post'),
+    path('search_results/', views.search_results, name='search_results'),
     path('category/<slug:category_name_slug>/',
          views.show_category, name='show_category'),
 

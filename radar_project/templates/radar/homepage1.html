@@ -72,11 +72,14 @@
 						<div class="card-body">
 							<h5 class="card-title">{{post.title}}</h5>
 							<p class="card-text" style = "overflow:hidden; text-overflow: clip; white-space: nowrap;">{{post.description}}</p>
-							<p class="card-text"><small class="text-muted">Likes : {{ post.likes }}</small></p>
+							<p class="card-text"><small class="text-muted">Likes : {{ post.total_likes }}</small></p>
 							<p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
 						</div>
 						<div class="card-footer">
-							<button type="button" class="btn btn-outline-dark">Like</button>
+							<form action="{% url 'radar:like_post' post.pk %}" method="POST" class = "p-0 m-0 b-0">
+								{%csrf_token%}
+								<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">Like</button>
+							</form>
 						</div>
 					</div>
 				</div>
