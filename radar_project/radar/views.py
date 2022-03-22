@@ -11,7 +11,13 @@ from django.http import HttpResponseRedirect
 
 def like_post(request, pk):
     post = get_list_or_404(Post, id=request.POST.get('post_id'))[0]
-    post.likes.add(request.user)
+    liked = False
+    if post.likes.filter(id=request.user.id):
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
     return HttpResponseRedirect(reverse('homepage1'))
 
 
