@@ -50,12 +50,12 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
     # many to many because we want to register what user is liking!
     likes = models.ManyToManyField(User, related_name="posts")
-    image = models.ImageField(upload_to='images/', blank = True)
+    image = models.ImageField(upload_to='images/', blank=True)
     review = models.IntegerField(default=5)
     comments = ListCharField(
         base_field=models.CharField(max_length=5000),
-        max_length=(5000), 
-        blank = True
+        max_length=(5000),
+        blank=True
     )
     slug = models.SlugField(unique=True)
 
@@ -64,7 +64,6 @@ class Post(models.Model):
     # allows us to count number of likes
     def set_total_likes(self):
         self.total_likes = self.likes.count()
-        # return self.likes.count()
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

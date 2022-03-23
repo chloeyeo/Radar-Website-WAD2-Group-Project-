@@ -13,6 +13,10 @@ class UserProfileAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('user',)}
 
 
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)

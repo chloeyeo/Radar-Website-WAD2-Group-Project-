@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
 from radar.forms import UserForm, UserProfileForm, PostForm
@@ -149,25 +150,20 @@ def testview(request):
 
 
 @ login_required
-def add_post(request, category_name_slug):
-    try:
-        category = Category.objects.get(slug=category_name_slug)
-    except Category.DoesNotExist:
-        category = None
-    form = PostForm
-
-    if request.method == 'POST':
+def add_post(request):
+    submitted = False
+    if request.method == "POST":
         form = PostForm(request.POST)
-
         if form.is_valid():
-            if category:
-                post = form.save(commit=False)
-                post.category = category
-                post.views = 0
-                page.save()
+            form.save()
+            return HttpResponseRedirect('/radar/addPost?submitted=True')
+    else:
+        form = PostForm
+        if 'submitted' in request.GET:
+            submitted = True
 
-                return redirect(reverse('radar:homepage1'))
-        else:
-            print(form.errors)
-    context_dict = {'form': form, 'category': category}
-    return render(request, 'radar/addPost.html', context=context_dict)
+    context_dict = {}
+    context_dict['form'] = form
+    context_dict['submitted'] = submitted
+
+    return render(request, 'radar/addPost.html', context_dict)
