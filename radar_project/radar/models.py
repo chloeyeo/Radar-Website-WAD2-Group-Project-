@@ -16,6 +16,8 @@ class UserProfile(models.Model):
     age = models.IntegerField(default=18)
     slug = models.SlugField(unique=True)
 
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.username)
         super(UserProfile, self).save(*args, **kwargs)
@@ -31,6 +33,8 @@ class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
