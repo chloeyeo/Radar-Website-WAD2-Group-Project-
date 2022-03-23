@@ -43,8 +43,8 @@ def homepage1(request):
         context_dict['current_user'] = current_user.username.lower()
         for post in posts:
             post.set_total_likes()
-            print(post.total_likes)
         context_dict['posts'] = posts
+        context_dict['liked_posts'] = current_user.posts.all()
 
     except:
         context_dict['posts'] = None
@@ -146,7 +146,8 @@ def user_logout(request):
 
 def testview(request):
     return render(request, 'radar/viewPost.html')
-    
+
+
 @ login_required
 def add_post(request, category_name_slug):
     try:
@@ -154,17 +155,17 @@ def add_post(request, category_name_slug):
     except Category.DoesNotExist:
         category = None
     form = PostForm
-    
+
     if request.method == 'POST':
         form = PostForm(request.POST)
-        
+
         if form.is_valid():
             if category:
                 post = form.save(commit=False)
                 post.category = category
                 post.views = 0
                 page.save()
-                
+
                 return redirect(reverse('radar:homepage1'))
         else:
             print(form.errors)
