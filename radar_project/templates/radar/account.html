@@ -47,7 +47,7 @@
 
 
 {% block body_block %}
-{% if user %}
+{% if current_user %}
 
 <!-- user image -->
 <div class="fit-vertical">
@@ -59,12 +59,12 @@
 
     <!-- user data, i don't know why this is a form -->
 <form class = "form">
-    <h3>{{user.user.username}} details</h3>
-    <input class = "form-control" type="text" placeholder={{user.user.username}} name="username" required>
+    <h3>{{current_user.username}} details</h3>
+    <input class = "form-control" type="text" placeholder={{current_user.username}} name="username" required>
 
-    <input class = "form-control" type="text" placeholder={{user.user.email}} name="text" required>
+    <input class = "form-control" type="text" placeholder={{current_user.email}} name="text" required>
 
-    <input class = "form-control" type="number" placeholder={{user.age}} name="age" required>
+    <input class = "form-control" type="number" placeholder={{user_profile.age}} name="age" required>
 
     <button class = "" type="submit" class="signup">Update</button>
 </form>
@@ -111,7 +111,7 @@
 
 </div>
 {% else %}
-<strong>There are no posts present in your data base.</strong>
+<strong>You haven't liked any posts.</strong>
 {% endif %}
 
 {% else %}

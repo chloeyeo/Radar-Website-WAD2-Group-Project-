@@ -61,7 +61,7 @@ def add_category(name):
 
 def add_post(category, title, likes, views ,description, image):
     p = Post.objects.get_or_create(category = category, title = title, description = description)[0]
-    p.likes = likes
+    p.total_likes = likes
     p.views = views
     # read image in binary
     p.image = image

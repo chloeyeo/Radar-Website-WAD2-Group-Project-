@@ -135,16 +135,16 @@ def account(request, current_user_slug):
     context_dict = {}
     current_user = request.user
     context_dict['current_user'] = current_user
+    user_liked_posts = current_user.posts.all()
     try:
         userProfile = UserProfile.objects.get(slug=current_user_slug)
-        context_dict['user'] = userProfile
-        user_liked_posts = current_user.posts.all()
+        context_dict['user_profile'] = userProfile
         for post in user_liked_posts:
             post.set_total_likes()
     except UserProfile.DoesNotExist:
         context_dict['user'] = None
     context_dict['user_liked_posts'] = user_liked_posts
-    print(user_liked_posts)
+
     return render(request, 'radar/account.html', context=context_dict)
 
 

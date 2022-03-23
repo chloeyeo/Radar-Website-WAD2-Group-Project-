@@ -6,17 +6,41 @@ from django.forms import ModelForm
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-
     class Meta:
         model = User
         fields = ('username', 'email', 'password', 'first_name', 'last_name')
+        labels = {
+            'username': '',
+            'email': '',
+            'password': '',
+            'first_name': '',
+            'last_name': '',
+
+        }
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-select', 'placeholder': 'username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'passord'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First name'}),
+            'last_name': forms.TextInput(attrs={'class': "form-control", 'placeholder': 'Last name'}),
+        }
 
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('age', 'picture')
+
+        labels = {
+            'age': '',
+            'picture': '',
+        }
+
+        widgets = {
+            'age': forms.TextInput(attrs={'class': 'form-control', 'value': '18', 'id': 'id_age'}),
+            'picture': forms.ClearableFileInput(attrs={'class': "form-control form-control-lg", 'id': "formFileLg", 'type': "file", }),
+        }
 
 
 class PostForm(forms.ModelForm):
