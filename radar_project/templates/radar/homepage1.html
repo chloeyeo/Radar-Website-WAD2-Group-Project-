@@ -23,40 +23,21 @@
 <li><a href="{% url 'radar:homepage1' %}"></a></li>
 {% if user.is_authenticated %}
 	<div class="dropdown" style="overflow: visible !important;">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-			aria-expanded="false">
-			<!-- needs to be edited, I got loads of issues trying to use the implementation i found. Mustafa could help me with this using the given buttons and functionality -->
-			Dropdown
-		</button>
+		<a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{ MEDIA_URL }}profile_pictures/albert.jpg" class="rounded-circle dropdown-toggle " alt="profile picture"></a>
+
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 			<li><a class="cta" href="{% url 'radar:homepage1' %}"><button class="dropdown-item" type="button">Add post</button></a></li>
 			<li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item" type="button">Account</button></a></li>
 			<li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign out</button></a></li>
 		</ul>
 	</div>
-	<!-- <li> -->
-		<!-- the image will be the image of the user -->
-		<!-- this isn't opening -->
-		<!-- <div class="profile">
-			<img class="dropbtn" src="{{ MEDIA_URL }}images/albert.jpg" onclick="dropDown()" style="border-radius: 40px;">
-			<ul id="dropdownprof" class="dropdownprof">
-				<li><a href="myaccount.html">Account</a>
-					<p></p> <i class="fa-solid fa-user"></i>
-				</li>
-				<li><a href="addPost.html">Add post</a>
-					<p></p><i class="fa-solid fa-circle-plus"></i>
-				</li>
-				<li><a class="cta" href="{% url 'radar:logout' %}"><button>Logout</button></a></li>
-			</ul>
-		</div>
-		</div>
-	</li> -->
-	
+
 {% else %}
 	<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
 	<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
 {% endif %}
 {% endblock%}
+
 
 {% block body_block %}
 
@@ -82,7 +63,7 @@
 								{% if post in liked_posts%}
 								<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">Unlike</button>
 								{% else %}
-								<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">Like</button>
+								<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">like</button>
 								{% endif %}
 							</form>
 						</div>

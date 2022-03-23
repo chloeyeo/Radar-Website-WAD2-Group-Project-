@@ -37,14 +37,14 @@ def show_category(request, category_name_slug):
 def homepage1(request):
     context_dict = {}
     current_user = request.user
-
     try:
         posts = Post.objects.all()
         context_dict['current_user'] = current_user.username.lower()
         for post in posts:
             post.set_total_likes()
         context_dict['posts'] = posts
-        context_dict['liked_posts'] = current_user.posts.all()
+        if(current_user.is_authenticated):
+            context_dict['liked_posts'] = current_user.posts.all()
 
     except:
         context_dict['posts'] = None
