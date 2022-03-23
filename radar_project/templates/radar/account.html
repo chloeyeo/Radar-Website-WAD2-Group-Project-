@@ -1,20 +1,48 @@
 {% extends 'radar/base.html' %}
 {% load staticfiles %}
+
 {% block title_block %}
-Account
+{{ category.name }}
 {% endblock %}
 
-{% block nav_items%}
-<div id="dropDown" class="dropdown-content">
-    <a class="cta" href="login.html"><button class="myaccount">Friends</button></a>
-    <a class="cta" href="signup.html"><button class="friends">My account</button></a>
-</div>
+
+{% block headerElementsBeforeNav%}
+<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
 {% endblock%}
 
-{% block otherHeaderElements%}
-<div class="profile">
-    <img class="dropbtn" src="images/albert.jpg" onclick="dropDown();" style="border-radius: 40px;">
+{% block btn%}
+<form class="d-flex p-0 m-2" action="{% url 'radar:search_results'%}" method=GET>
+    {% csrf_token %}
+    <input type="search" class="form-control" placeholder="Search posts" aria-label="Search" name="searched">
+    <button type="submit" class="btn" style="background-color: #B000FF; border-radius: 0px; "><i
+            class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+{% endblock%}
+
+
+{% block nav_items%}
+<li><a href="{% url 'radar:homepage1' %}"></a></li>
+
+{% if current_user.is_authenticated %}
+<div class="dropdown" style="overflow: visible !important;">
+    <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><img
+            src="{{ MEDIA_URL }}profile_pictures/albert.jpg" class="rounded-circle dropdown-toggle "
+            alt="profile picture"></a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><a class="cta" href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
+                    post</button></a></li>
+        <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
+                    type="button">Account</button></a></li>
+        <li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign
+                    out</button></a></li>
+    </ul>
 </div>
+
+{% else %}
+<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
+<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% endif %}
 {% endblock%}
 
 
@@ -30,17 +58,61 @@ Account
     </div>
 
     <!-- user data, i don't know why this is a form -->
-<form>
+<form class = "form">
     <h3>{{user.user.username}} details</h3>
-    <input type="text" placeholder={{user.user.username}} name="username" required>
+    <input class = "form-control" type="text" placeholder={{user.user.username}} name="username" required>
 
-    <input type="text" placeholder={{user.user.email}} name="text" required>
+    <input class = "form-control" type="text" placeholder={{user.user.email}} name="text" required>
 
-    <input type="number" placeholder={{user.age}} name="age" required>
+    <input class = "form-control" type="number" placeholder={{user.age}} name="age" required>
 
-    <button type="submit" class="signup">Update</button>
+    <button class = "" type="submit" class="signup">Update</button>
 </form>
 </div>
+
+<!-- {{user_liked_posts}} -->
+{% if user_liked_posts %}
+<h3>{{current_user}} interests</h3>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for post in user_liked_posts %}
+    <div class="col">
+        <div class="card">
+
+            <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}}" style="height: 20em">
+
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text" style="overflow:hidden; text-overflow: clip; white-space: nowrap;">
+                    {{post.description}}</p>
+                <p class="card-text"><small class="text-muted">Likes : {{ post.total_likes }}</small></p>
+                <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+            </div>
+            <div class="card-footer">
+
+
+                {% if current_user.is_authenticated %}
+                <form action="{% url 'radar:like_post' post.pk %}" method="POST" class="p-0 m-0 b-0">
+                    {%csrf_token%}
+                    {% if post in liked_posts%}
+                    <button type="submit" name="post_id" value="{{post.id}}"
+                        class="btn btn-outline-dark">Unlike</button>
+                    {% else %}
+                    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">like</button>
+                    {% endif %}
+                </form>
+                {% else %}
+                <a href="{% url 'radar:login' %}"><button class="btn btn-outline-dark">Like</button></a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% else %}
+<strong>There are no posts present in your data base.</strong>
+{% endif %}
 
 {% else %}
 The specified user does not exist.

@@ -24,6 +24,8 @@ def like_post(request, pk):
 
 def show_category(request, category_name_slug):
     context_dict = {}
+    current_user = request.user
+    context_dict['current_user'] = current_user
     try:
         category = Category.objects.get(slug=category_name_slug)
         posts = Post.objects.filter(category=category)
@@ -131,11 +133,18 @@ def signup(request):
 @ login_required
 def account(request, current_user_slug):
     context_dict = {}
+    current_user = request.user
+    context_dict['current_user'] = current_user
     try:
         userProfile = UserProfile.objects.get(slug=current_user_slug)
         context_dict['user'] = userProfile
+        user_liked_posts = current_user.posts.all()
+        for post in user_liked_posts:
+            post.set_total_likes()
     except UserProfile.DoesNotExist:
         context_dict['user'] = None
+    context_dict['user_liked_posts'] = user_liked_posts
+    print(user_liked_posts)
     return render(request, 'radar/account.html', context=context_dict)
 
 
@@ -152,6 +161,7 @@ def testview(request):
 @ login_required
 def add_post(request):
     submitted = False
+    current_user = request.user
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -165,5 +175,6 @@ def add_post(request):
     context_dict = {}
     context_dict['form'] = form
     context_dict['submitted'] = submitted
+    context_dict['current_user'] = current_user
 
     return render(request, 'radar/addPost.html', context_dict)

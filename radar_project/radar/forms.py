@@ -34,6 +34,6 @@ class PostForm(forms.ModelForm):
         widgets = {
             'category': forms.Select(attrs={'class': 'form-select', 'placeholder': 'category'}),
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'title'}),
-            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Place description', }),
+            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Place description', 'id': "exampleFormControlTextarea1", 'rows': "3"}),
             'image': forms.ClearableFileInput(attrs={'class': "form-control form-control-lg", 'id': "formFileLg", 'type': "file", }),
         }
