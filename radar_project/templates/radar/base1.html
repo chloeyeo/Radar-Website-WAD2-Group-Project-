@@ -24,10 +24,14 @@
 {% if user.is_authenticated %}
 <div class="dropdown" style="overflow: visible !important;">
     <!-- get user profile picture -->
-    <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><img
+    <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        {% if user_profile.picture%}
+        <img
             src="{{user_profile.picture.url}}" class="rounded-circle dropdown-toggle "
             alt="profile picture"></a>
-
+        {%else%}
+        <img src="{{MEDIA_URL}}profile_pictures/placeholder.webp" class="rounded-circle dropdown-toggle " alt="profile picture"></a>
+        {%endif%}
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
         <li><a class="cta" href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
                     post</button></a></li>
