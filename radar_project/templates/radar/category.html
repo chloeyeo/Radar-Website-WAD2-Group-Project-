@@ -64,9 +64,18 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{post.title}}</h5>
                                 <p class="card-text">{{post.description}}</p>
-                                <p class="card-text"><small class="text-muted">Likes : {{ post.total_likes }}</small></p>
+                                <p id="like_count" class="card-text"><small class="text-muted" name="{{post.id}}">Likes : {{ post.total_likes }}</small>
+                                </p>
                                 <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
                             </div>
+                        </div>
+                        <div>
+                            {% if user.is_authenticated %}
+                            <button class="like_post_btn btn btn-outline-dark" post-id="{{ post.id }}" type="button">
+                                Like </button>
+                            {% else %}
+                            <button type="button" class="login_to_like btn btn-outline-dark">like</button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

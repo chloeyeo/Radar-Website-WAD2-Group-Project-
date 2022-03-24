@@ -70,10 +70,7 @@
 </form>
 </div>
 
-like functionality
-
-<!-- {{user_liked_posts}} -->
-<!-- {% if user_liked_posts %}
+{% if user_liked_posts %}
 <h3>{{current_user}} interests</h3>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for post in user_liked_posts %}
@@ -92,19 +89,14 @@ like functionality
             <div class="card-footer">
 
 
-                {% if current_user.is_authenticated %}
-                <form action="{% url 'radar:like_post' post.pk %}" method="POST" class="p-0 m-0 b-0">
-                    {%csrf_token%}
-                    {% if post in liked_posts%}
-                    <button type="submit" name="post_id" value="{{post.id}}"
-                        class="btn btn-outline-dark">Unlike</button>
-                    {% else %}
-                    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">like</button>
-                    {% endif %}
-                </form>
+            <div>
+                {% if user.is_authenticated %}
+                <button class="like_post_btn btn btn-outline-dark" post-id="{{ post.id }}" type="button">
+                    Like </button>
                 {% else %}
-                <a href="{% url 'radar:login' %}"><button class="btn btn-outline-dark">Like</button></a>
+                <button type="button" class="login_to_like btn btn-outline-dark">like</button>
                 {% endif %}
+            </div>
 
             </div>
         </div>
@@ -114,7 +106,7 @@ like functionality
 </div>
 {% else %}
 <strong>You haven't liked any posts.</strong>
-{% endif %} -->
+{% endif %}
 
 {% else %}
 The specified user does not exist.
