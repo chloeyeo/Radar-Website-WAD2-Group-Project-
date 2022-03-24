@@ -17,7 +17,12 @@
                 <div class="card mb-3" style="max-width: 80%;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{post.image.url}}" class="img-fluid rounded-start" alt="{{ post.title}}" style="width: 100%;">
+                            {% if post.image %}
+                            <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
+                            {% else %}
+                            <!-- show default image -->
+                            <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
+                            {% endif %}
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

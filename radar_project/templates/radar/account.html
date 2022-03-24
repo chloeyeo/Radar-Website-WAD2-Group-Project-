@@ -37,7 +37,12 @@
     <div class="col">
         <div class="card">
 
-            <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}}" style="height: 20em">
+            {% if post.image %}
+            <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
+            {% else %}
+            <!-- show default image -->
+            <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
+            {% endif %}
 
             <div class="card-body">
                 <h5 class="card-title">{{post.title}}</h5>
