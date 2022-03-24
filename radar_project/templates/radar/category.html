@@ -14,6 +14,7 @@
             {% if posts %}
             <ul>
                 {% for post in posts %}
+				<a href="{% url 'radar:post' post.slug %}">
                 <div class="card mb-3" style="max-width: 80%;">
                     <div class="row g-0">
                         <div class="col-md-4">
@@ -42,7 +43,7 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
+                </div></a>
                 {% endfor %}
             </ul>
             {% else %}
