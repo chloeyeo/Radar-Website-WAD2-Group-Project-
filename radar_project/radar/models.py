@@ -12,10 +12,9 @@ class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # The additional attributes we wish to include.
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    picture = models.ImageField(upload_to='profile_pictures/', blank=True)
     age = models.IntegerField(default=18)
     slug = models.SlugField(unique=True)
-
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.username)

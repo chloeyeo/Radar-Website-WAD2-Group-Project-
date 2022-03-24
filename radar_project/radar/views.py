@@ -63,7 +63,9 @@ def homepage(request):
             post.set_total_likes()
         context_dict['posts'] = posts
         if(current_user.is_authenticated):
+            user_profile = UserProfile.objects.get(user=current_user)
             context_dict['liked_posts'] = current_user.posts.all()
+            context_dict['user_profile'] = user_profile
 
     except:
         context_dict['posts'] = None
@@ -80,7 +82,6 @@ def search_results(request):
         return render(request, 'radar/search_results.html', context=context_dict)
     else:
         return render(request, 'radar/search_results.html', context=context_dict)
-
 
 
 def user_login(request):

@@ -23,8 +23,9 @@
 <li><a href="{% url 'radar:homepage' %}"></a></li>
 {% if user.is_authenticated %}
 <div class="dropdown" style="overflow: visible !important;">
+    <!-- get user profile picture -->
     <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><img
-            src="{{ MEDIA_URL }}profile_pictures/albert.jpg" class="rounded-circle dropdown-toggle "
+            src="{{user_profile.picture.url}}" class="rounded-circle dropdown-toggle "
             alt="profile picture"></a>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
