@@ -11,18 +11,8 @@ from radar.models import Post, Category, UserProfile
 from django.http import HttpResponseRedirect
 from django.views import View
 from django.utils.decorators import method_decorator
+from django.http import JsonResponse
 
-
-# def like_post(request, pk):
-#     post = get_list_or_404(Post, id=request.POST.get('post_id'))[0]
-#     liked = False
-#     if post.likes.filter(id=request.user.id):
-#         post.likes.remove(request.user)
-#         liked = False
-#     else:
-#         post.likes.add(request.user)
-#         liked = True
-#     return HttpResponseRedirect(reverse('homepage1'))
 
 class LikePostView(View):
     @ method_decorator(login_required)

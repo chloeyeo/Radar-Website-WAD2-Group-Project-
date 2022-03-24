@@ -12,12 +12,20 @@ $(document).ready(function() {
 
             // why isn't the button updating
             if(data.liked){
-                $(this).html("Liked");
+                $(this).css("Liked");
             }else{
                 $(this).html("Like");
             }
         }
         );
     });
+
+    $("#login_form").on("submit", function(){
+        // adding some ajax functionality of login form
+    })
+
+    $("#sign-up-form").on("submit", function(){
+        // adding some ajax functionality of signup form
+    })
 
 });
