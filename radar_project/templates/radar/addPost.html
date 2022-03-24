@@ -1,0 +1,29 @@
+{% extends 'radar/base1.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+Add a post
+{% endblock %}
+
+
+{% block body_block %}
+<center>
+{% if submitted %}
+you submitted a post
+
+{% else %}
+
+<form method=POST action="" >
+  {% csrf_token %}
+
+  {{ form.as_p}}
+
+  <input type="submit" name="submit" class="btn btn-secondary">
+</form>
+
+{% endif %}
+</center>
+  
+
+{% endblock %}
+

@@ -6,11 +6,9 @@
 {% endblock %}
 
 {% block nav_items%}
-<li><a href="{% url 'radar:homepage1' %}"></a></li>
-<li><a href="{% url 'radar:homepage1' %}">Try it out!</a></li>
 {% endblock%}
 
-{% block btn%}
+{% block headerElementsAfterNav%}
 <a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
 {% endblock%}
 
@@ -19,10 +17,10 @@
 {% block body_block %}
 {%if registered%}
 <strong>Thank you for registering with us!</strong>
-<a href="{% url 'radar:homepage1' %}">Return to the homepage.</a><br />
+<a href="{% url 'radar:homepage' %}">Return to the homepage.</a><br />
 {% else %}
 	
-<form id="user_form" method="post" action="{% url 'radar:signup' %}" enctype="multipart/form-data">
+<form id="sign-up-form" method="post" action="{% url 'radar:signup' %}" enctype="multipart/form-data">
 	<h3>Sign up here </h3>
 	{% csrf_token %}
 	{{ user_form.as_p }}
@@ -30,27 +28,6 @@
 	<button type="submit" class="signup" >Sign Up</button>
 </form>
 {% endif %}
-<!--<form>  
-	<h3>Sign Up Here</h3>
 
-  <label for="username"></label>
-  
-  <input type="text" placeholder="Username" name="username" required>
-  
-  <input type="text" placeholder="First Name" name="first_name" required>
-  
-  <input type="text" placeholder="Last Name" name="last_name" required>
-  
-  <input type="text" placeholder="Email" name="email" required>
-  
-  <input type="password" placeholder="Password" name="password" required>
-
-  <button type="submit" class="signup" >Sign Up</button>
-</div>
-<div class="social">
-  <div class="go"><i class="fab fa-google"></i>  Google</div>
-  <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-</div>
-</form>-->
 
 {% endblock %}

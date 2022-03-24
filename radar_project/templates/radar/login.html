@@ -2,45 +2,25 @@
 {% load staticfiles %}
 
 {% block title_block %}
-Login
+Login page
 {% endblock %}
 
 {% block nav_items%}
-<li><a href="{% url 'radar:homepage1' %}"></a></li>
-      <li><a href="{% url 'radar:homepage1' %}">Try it out!</a></li>
 {% endblock%}
 
-{% block btn%}
-<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% block headerElementsAfterNav%}
+<a class="cta" href="{%url 'radar:signup'%}"><button>Sign Up</button></a>
 {% endblock%}
-
 
 {% block body_block %}
 <form id="login_form" method="post" action="{% url 'radar:login' %}">
-	<h3>Login Here</h3>
-	{% csrf_token %}
-	<label for="username">Username</label>
-	<input type="text" placeholder="Username" name="username" required>
-	
-	<label for="password">Password</label>
-	<input type="password" placeholder="Password" name="password" required>
-	
-	<button type="submit" class="submit">Login</button>
+    <h3>Login Here</h3>
+    {% csrf_token %}
+    <label class="form-label" for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" name="username" required>
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" type="password" placeholder="Password" name="password" required>
+    
+    <button type="submit" value="submit">Login</button>
 </form>
-<!--<form>  
-  <h3>Login Here</h3>
-
-  <label for="username">Username</label>
-  <input type="text" placeholder="Username" name="username" required>
-  
-  <label for="password">Password</label>
-  <input type="password" placeholder="Password" name="password" required>
-
-  <button type="submit" class="submit">Login</button>
-</div>
-<div class="social">
-  <div class="go"><i class="fab fa-google"></i>  Google</div>
-  <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-</div>
-</form>-->
 {% endblock %}

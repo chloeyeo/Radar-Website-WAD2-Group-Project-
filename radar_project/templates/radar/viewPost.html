@@ -1,0 +1,46 @@
+{% extends 'radar/base1.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+View post
+{% endblock %}
+
+
+{% block body_block %}
+{% if post %}
+<div class="card mb-3" style="max-width: 80%;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {% if post.image %}
+            <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
+            {% else %}
+            <!-- show default image -->
+            <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image"
+                style="height: 20em">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <p class="card-text">{{post.description}}</p>
+                <p id="like_count" class="card-text"><small class="text-muted" name="{{post.id}}">Likes : {{post.total_likes }}</small>
+                </p>
+                <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+            </div>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+            <button class="like_post_btn btn btn-outline-dark" post-id="{{ post.id }}" type="button">
+                Like </button>
+            {% else %}
+            <button type="button" class="login_to_like btn btn-outline-dark">like</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% else %}
+<strong>No post with {{post.id}}</strong>
+{% endif %}
+
+
+{% endblock %}
