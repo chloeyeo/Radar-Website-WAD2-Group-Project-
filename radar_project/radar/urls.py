@@ -17,3 +17,4 @@ urlpatterns = [
     path('post/<slug:post_title_slug>/', views.show_post, name='post'),
 
 ]
+]

@@ -125,6 +125,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/radar/WAD2-Project/radar_project/static'
 
 
 # MEDIA_DIR
