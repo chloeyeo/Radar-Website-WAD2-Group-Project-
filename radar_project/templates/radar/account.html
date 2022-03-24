@@ -13,7 +13,12 @@
 <div class="fit-vertical">
     <div class="profile"
         style="border-radius: 90px; height:90px; width:90px;margin-left: auto; margin-right: auto; margin-top: 2.5%;">
-        <img class="dropbtn" src="{{ MEDIA_URL }}profile_pictures/albert.jpg"  style="border-radius: 40px; cursor:auto;">
+        {% if user_profile.picture%}
+        <img src="{{user_profile.picture.url}}" class="rounded-circle dropdown-toggle " alt="profile picture"></a>
+        {%else%}
+        <img src="{{MEDIA_URL}}profile_pictures/placeholder.webp" class="rounded-circle dropdown-toggle "
+            alt="profile picture"></a>
+        {%endif%}
 
     </div>
 

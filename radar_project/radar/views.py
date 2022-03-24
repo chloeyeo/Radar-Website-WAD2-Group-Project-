@@ -55,11 +55,13 @@ def show_category(request, category_name_slug):
 
 def show_post(request, post_title_slug):
     context_dict = {}
+    context_dict['current_user'] = request.user
     try:
         post = Post.objects.get(slug=post_title_slug)
         context_dict['post'] = post
     except Post.DoesNotExist:
         context_dict['post'] = None
+
     return render(request, 'radar/viewPost.html', context=context_dict)
 
 
