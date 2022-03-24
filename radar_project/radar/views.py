@@ -53,6 +53,16 @@ def show_category(request, category_name_slug):
     return render(request, 'radar/category.html', context=context_dict)
 
 
+def show_post(request, post_title_slug):
+    context_dict = {}
+    try:
+        post = Post.objects.get(slug=post_title_slug)
+        context_dict['post'] = post
+    except Post.DoesNotExist:
+        context_dict['post'] = None
+    return render(request, 'radar/viewPost.html', context=context_dict)
+
+
 def homepage(request):
     context_dict = {}
     current_user = request.user
@@ -160,6 +170,7 @@ def user_logout(request):
     logout(request)
     return redirect(reverse('radar:homepage'))
 
+
 @ login_required
 def add_post(request):
     submitted = False
@@ -180,12 +191,3 @@ def add_post(request):
     context_dict['current_user'] = current_user
 
     return render(request, 'radar/addPost.html', context_dict)
-
-def show_post(request, post_title_slug):
-    context_dict = {}
-    try:
-        post = Post.objects.get(slug = post_title_slug)
-        context_dict['post'] = post
-    except post.DoesNotExist:
-        context_dict['post'] = None
-    return render(request, 'radar/viewPost.html', context=context_dict) 
