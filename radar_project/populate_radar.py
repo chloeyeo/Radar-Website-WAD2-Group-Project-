@@ -23,7 +23,7 @@ def populate():
     ]
 
     movie = [
-        {'title' : 'Horgwats' , 'views':54, 'likes':35, 'image': "/images/hogwarts-castle.jpg",'description' : 'Hogwarts School of Witchcraft and Wizardry, often shortened to Hogwarts, was the British wizarding school, located in the Scottish Highlands.It accepted magical students from Great Britain and Ireland for enrolment.It was a state-owned school, funded by the Ministry of Magic.'},
+        {'title' : 'Hogwarts' , 'views':54, 'likes':35, 'image': "/images/hogwarts-castle.jpg",'description' : 'Hogwarts School of Witchcraft and Wizardry, often shortened to Hogwarts, was the British wizarding school, located in the Scottish Highlands.It accepted magical students from Great Britain and Ireland for enrolment.It was a state-owned school, funded by the Ministry of Magic.'},
         {'title' : 'Avengers Tower' , 'views':32, 'likes':25, 'image': "/images/AvengersTower.jpg",'description':'Avengers Tower is a fictional location in the Marvel Cinematic Universe. It was the original headquarters of the Avengers.'},
         {'title' : 'Kamar-Taj' , 'views':37, 'likes':29, 'image': "/images/Kamar-Taj.jpg",'description' : "Kamar-Taj - a mythical Tibetan city hidden in the Himalayan mountains where Doctor Strange receives his training as Sorcerer Supreme - is a rather textbook case of that second type, being a more-or-less direct lift of Shangri-La, the similarly mystical city at the center of James Hilton's classic novel Lost Horizon."},
         {'title' : 'Atlantis' , 'views':59, 'likes':50, 'image': "/images/Atlantis.jpg", 'description' :"Atlantis, a fabulously wealthy and advanced civilization, was swept into the sea and lost forever."},
@@ -38,10 +38,10 @@ def populate():
 
 
     categories = {
-        'cartoon' : {'posts' : cartoon},
-        'anime' : {'posts' : anime},
-        'movie' : {'posts' : movie},
-        'video_games' : {'posts' : video_games},
+        'Cartoon' : {'posts' : cartoon},
+        'Anime' : {'posts' : anime},
+        'Movie' : {'posts' : movie},
+        'Video_games' : {'posts' : video_games},
     }
 
     for category, categoryData in categories.items():
