@@ -53,7 +53,7 @@ def show_category(request, category_name_slug):
     return render(request, 'radar/category.html', context=context_dict)
 
 
-def homepage1(request):
+def homepage(request):
     context_dict = {}
     current_user = request.user
     try:
@@ -67,7 +67,7 @@ def homepage1(request):
 
     except:
         context_dict['posts'] = None
-    return render(request, 'radar/homepage1.html', context=context_dict)
+    return render(request, 'radar/homepage.html', context=context_dict)
 
 
 def search_results(request):
@@ -82,16 +82,6 @@ def search_results(request):
         return render(request, 'radar/search_results.html', context=context_dict)
 
 
-# this will be implemented to be the only home page
-def homepage(request):
-    context_dict = {}
-    try:
-        posts = Post.objects.all()
-        context_dict['posts'] = posts
-    except:
-        context_dict['posts'] = None
-    return render(request, 'radar/header.html', context=context_dict)
-
 
 def user_login(request):
     if request.method == 'POST':
@@ -102,7 +92,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect(reverse('radar:homepage1'))
+                return redirect(reverse('radar:homepage'))
             else:
                 return HttpResponse("Your Radar account is disabled.")
         else:
@@ -167,7 +157,7 @@ def account(request, current_user_slug):
 @ login_required
 def user_logout(request):
     logout(request)
-    return redirect(reverse('radar:homepage1'))
+    return redirect(reverse('radar:homepage'))
 
 
 def testview(request):
