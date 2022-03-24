@@ -22,6 +22,7 @@
     <!-- allows us to overflow with the dropdown -->
     <header style="overflow: visible !important;">
         <!-- added different blocks basing on the order of some pages -->
+        
         {% block headerElementsBeforeNav%}
         {% endblock%}
         <a href="{% url 'radar:homepage' %}"><img class="logo" src="{% static 'images/logo.jpg' %}" width=80 height="60" alt="logo"></a>
@@ -51,6 +52,9 @@
     <div id="main">
     
     </div>
+
+
+
 
     <body >
         {% block body_block %}

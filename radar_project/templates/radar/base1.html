@@ -1,0 +1,48 @@
+{% extends 'radar/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+{% endblock %}
+
+<!-- nav items the page that extends this -->
+{% block headerElementsBeforeNav%}
+<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+{% endblock%}
+
+{% block btn%}
+<form class="d-flex p-0 m-2" action="{% url 'radar:search_results'%}" method=GET>
+    {% csrf_token %}
+    <input type="search" class="form-control" placeholder="Search posts" aria-label="Search" name="searched">
+    <button type="submit" class="btn" style="background-color: #B000FF; border-radius: 0px; "><i
+            class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+{% endblock%}
+
+
+{% block nav_items%}
+<li><a href="{% url 'radar:homepage' %}"></a></li>
+{% if user.is_authenticated %}
+<div class="dropdown" style="overflow: visible !important;">
+    <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"><img
+            src="{{ MEDIA_URL }}profile_pictures/albert.jpg" class="rounded-circle dropdown-toggle "
+            alt="profile picture"></a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><a class="cta" href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
+                    post</button></a></li>
+        <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
+                    type="button">Account</button></a></li>
+        <li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign
+                    out</button></a></li>
+    </ul>
+</div>
+
+{% else %}
+<a class="cta" href="{% url 'radar:login' %}"><button class="loginbtn">Login</button></a>
+<a class="cta" href="{% url 'radar:signup' %}"><button>Sign Up</button></a>
+{% endif %}
+{% endblock%}
+
+
+{% block body_block %}
+{% endblock %}
