@@ -12,6 +12,11 @@ i {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.carddiv{
+  color:black; 
+  text-decoration: none;
+  text-align: left;
+}
 .navbar a {
   float: left;
   font-size: 16px;

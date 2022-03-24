@@ -59,6 +59,7 @@ def show_post(request, post_title_slug):
     try:
         post = Post.objects.get(slug=post_title_slug)
         post.views += 1
+        post.save()
         context_dict['post'] = post
     except Post.DoesNotExist:
         context_dict['post'] = None

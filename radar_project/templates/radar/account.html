@@ -40,7 +40,7 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for post in user_liked_posts %}
     <div class="col">
-	<a href="{% url 'radar:post' post.slug %}">
+	<a href="{% url 'radar:post' post.slug %}" style="color:black; text-decoration: none;text-align: left;">
         <div class="card">
 
             {% if post.image %}
@@ -50,7 +50,7 @@
             <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
             {% endif %}
 
-            <div class="card-body">
+            <div class="card-body" >
                 <h5 class="card-title">{{post.title}}</h5>
                 <p class="card-text" style="overflow:hidden; text-overflow: clip; white-space: nowrap;">
                     {{post.description}}</p>
