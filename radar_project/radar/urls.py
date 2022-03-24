@@ -12,4 +12,6 @@ urlpatterns = [
     path('friendspage/', views.friendspage, name='friendspage'),
     path('account/', views.account, name='account'),
     path('logout/', views.user_logout, name='logout'),
+    path('category/<slug:category_name_slug>/',
+         views.show_category, name='show_category'),
 ]
