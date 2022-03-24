@@ -20,7 +20,7 @@ Search results
 
 
 {% block nav_items%}
-<li><a href="{% url 'radar:homepage1' %}"></a></li>
+<li><a href="{% url 'radar:homepage' %}"></a></li>
 {% if user.is_authenticated %}
 <div class="dropdown" style="overflow: visible !important;">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
@@ -29,7 +29,7 @@ Search results
         Dropdown
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li><a class="cta" href="{% url 'radar:homepage1' %}"><button class="dropdown-item" type="button">Add
+        <li><a class="cta" href="{% url 'radar:homepage' %}"><button class="dropdown-item" type="button">Add
                     post</button></a></li>
         <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
                     type="button">Account</button></a></li>
