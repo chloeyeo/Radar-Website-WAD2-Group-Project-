@@ -1,3 +1,4 @@
+import json
 from urllib import response
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
@@ -8,18 +9,43 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from radar.models import Post, Category, UserProfile
 from django.http import HttpResponseRedirect
+from django.views import View
+from django.utils.decorators import method_decorator
 
 
-def like_post(request, pk):
-    post = get_list_or_404(Post, id=request.POST.get('post_id'))[0]
-    liked = False
-    if post.likes.filter(id=request.user.id):
-        post.likes.remove(request.user)
-        liked = False
-    else:
-        post.likes.add(request.user)
-        liked = True
-    return HttpResponseRedirect(reverse('homepage1'))
+# def like_post(request, pk):
+#     post = get_list_or_404(Post, id=request.POST.get('post_id'))[0]
+#     liked = False
+#     if post.likes.filter(id=request.user.id):
+#         post.likes.remove(request.user)
+#         liked = False
+#     else:
+#         post.likes.add(request.user)
+#         liked = True
+#     return HttpResponseRedirect(reverse('homepage1'))
+
+class LikePostView(View):
+    @ method_decorator(login_required)
+    def get(self, request):
+        post_id = request.GET['post_id']
+        try:
+            post = Post.objects.get(id=int(post_id))
+            liked = False
+            if post.likes.filter(id=request.user.id):
+                post.likes.remove(request.user)
+                liked = False
+            else:
+                post.likes.add(request.user)
+                liked = True
+        except Category.DoesNotExist:
+            return HttpResponse(-1)
+        except ValueError:
+            return HttpResponse(-1)
+        post.set_total_likes()
+        post.save()
+        context_dict = {"total_likes": post.total_likes,
+                        "liked": liked, 'post_id': post.id}
+        return HttpResponse(json.dumps(context_dict), content_type='application/json')
 
 
 def show_category(request, category_name_slug):

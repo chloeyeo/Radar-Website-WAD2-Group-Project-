@@ -66,19 +66,6 @@
                                 <p class="card-text">{{post.description}}</p>
                                 <p class="card-text"><small class="text-muted">Likes : {{ post.total_likes }}</small></p>
                                 <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
-                                
-                                {% if user.is_authenticated %}
-                                <form action="{% url 'radar:like_post' post.pk %}" method="POST" class="p-0 m-0 b-0">
-                                    {%csrf_token%}
-                                    {% if post in liked_posts%}
-                                    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">Unlike</button>
-                                    {% else %}
-                                    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-outline-dark">like</button>
-                                    {% endif %}
-                                </form>
-                                {% else %}
-                                <a href="{% url 'radar:login' %}"><button class="btn btn-outline-dark">Like</button></a>
-                                {% endif %}
                             </div>
                         </div>
                     </div>
