@@ -70,14 +70,14 @@ def show_post(request, post_title_slug):
 
 def homepage(request):
     context_dict = {}
-    # current_user = request.user
     try:
         posts = Post.objects.all()
         context_dict['current_user'] = request.user.username.lower()
         for post in posts:
             post.set_total_likes()
         context_dict['posts'] = posts
-        if (UserProfile.objects.filter(user=request.user).exists()):
+        # check if user is not anonymous in order to get the appropriate profile
+        if(not request.user.is_anonymous and UserProfile.objects.filter(user=request.user).exists()):
             user_profile = UserProfile.objects.get(user=request.user)
             context_dict['user_profile'] = user_profile
 
