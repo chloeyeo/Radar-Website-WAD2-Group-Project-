@@ -15,5 +15,4 @@ urlpatterns = [
     path('addPost/', views.add_post, name='addPost'),
     path('like_post/', views.LikePostView.as_view(), name='like_post'),
     path('post/<slug:post_title_slug>/', views.show_post, name='post'),
-
 ]

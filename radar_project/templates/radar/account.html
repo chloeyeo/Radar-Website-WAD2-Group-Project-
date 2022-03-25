@@ -22,18 +22,23 @@
 
     </div>
 
-    <!-- user data, i don't know why this is a form -->
-<form class = "form">
-    <h3>{{current_user.username}} details</h3>
-    <input class = "form-control" type="text" placeholder={{current_user.username}} name="username" required>
+    <!-- User profile form -->
+<div class="form-content">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="small mb-1">Username:</label>
+            {{ user_form.username }}
+            <label class="small mb-1">Email:</label>
+            {{ user_form.email }}
+        </div>
 
-    <input class = "form-control" type="text" placeholder={{current_user.email}} name="text" required>
-
-    <input class = "form-control" type="number" placeholder={{user_profile.age}} name="age" required>
-
-    <button class = "" type="submit" class="signup">Update</button>
-</form>
+        <br><br>
+        <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+        <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+    </form>
 </div>
+
 
 {% if user_liked_posts %}
 <h3>{{current_user}} interests</h3>

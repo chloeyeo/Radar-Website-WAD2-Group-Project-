@@ -2,7 +2,7 @@ import json
 from urllib import response
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
-from radar.forms import UserForm, UserProfileForm, PostForm
+from radar.forms import UserForm, UserProfileForm, PostForm, UpdateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
@@ -12,6 +12,7 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 class LikePostView(View):
@@ -166,6 +167,17 @@ def account(request, current_user_slug):
         context_dict['user'] = None
     context_dict['user_liked_posts'] = user_liked_posts
 
+    # update account logic
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return HttpResponseRedirect('/radar/account/' + current_user_slug)
+
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+
+    context_dict['user_form'] = user_form
     return render(request, 'radar/account.html', context=context_dict)
 
 
