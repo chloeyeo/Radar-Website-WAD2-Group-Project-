@@ -22,18 +22,7 @@ $(document).ready(function() {
 
    $("#login_form").on("submit", function(e){
         // adding some ajax functionality of login form
-        $.ajax({
-            type: 'POST',
-            URL: "{% url 'radar:login' %}",
-            data : {
-                name: $("#name").val(),
-                password: $("#password").val(),
-                csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
-            },
-            error : function(response){
-                alert(response);
-            },
-        });
+       
     });
 
     $("#sign-up-form").on("submit", function(){
