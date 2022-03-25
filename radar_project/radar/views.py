@@ -70,16 +70,15 @@ def show_post(request, post_title_slug):
 
 def homepage(request):
     context_dict = {}
-    current_user = request.user
+    # current_user = request.user
     try:
         posts = Post.objects.all()
-        context_dict['current_user'] = current_user.username.lower()
+        context_dict['current_user'] = request.user.username.lower()
         for post in posts:
             post.set_total_likes()
         context_dict['posts'] = posts
-        if(current_user.is_authenticated):
-            user_profile = UserProfile.objects.get(user=current_user)
-            context_dict['liked_posts'] = current_user.posts.all()
+        if (UserProfile.objects.filter(user=request.user).exists()):
+            user_profile = UserProfile.objects.get(user=request.user)
             context_dict['user_profile'] = user_profile
 
     except:
@@ -159,8 +158,9 @@ def account(request, current_user_slug):
     context_dict['current_user'] = current_user
     user_liked_posts = current_user.posts.all()
     try:
-        userProfile = UserProfile.objects.get(slug=current_user_slug)
-        context_dict['user_profile'] = userProfile
+        if (UserProfile.objects.filter(user=request.user).exists()):
+            userProfile = UserProfile.objects.get(slug=current_user_slug)
+            context_dict['user_profile'] = userProfile
         for post in user_liked_posts:
             post.set_total_likes()
     except UserProfile.DoesNotExist:
