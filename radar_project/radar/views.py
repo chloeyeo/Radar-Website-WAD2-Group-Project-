@@ -44,8 +44,8 @@ def show_category(request, category_name_slug):
     context_dict['current_user'] = current_user
     try:
         category = Category.objects.get(slug=category_name_slug)
-        category.views += 1 # added
-        category.save() # added
+        #category.views += 1 # added
+        #category.save() # added
         posts = Post.objects.filter(category=category)
         context_dict['posts'] = posts
         context_dict['category'] = category
