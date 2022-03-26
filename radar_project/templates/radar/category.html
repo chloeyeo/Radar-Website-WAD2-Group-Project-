@@ -11,6 +11,7 @@
         <div>
         {% if category %}
             <h1>{{ category.name }}</h1>
+			<h5>Views: {{ category.views}}</h5>
             {% if posts %}
             <ul>
                 {% for post in posts %}
