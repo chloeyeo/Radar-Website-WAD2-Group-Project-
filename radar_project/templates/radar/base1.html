@@ -6,15 +6,15 @@
 
 <!-- nav items the page that extends this -->
 {% block headerElementsBeforeNav%}
-<button onclick="openNav()" style="background-color: #F25D50;"><i class="fa-solid fa-bars"></i></button>
+<button onclick="openNav()" style="background-color:#0d0d0d"><i class="fa-solid fa-bars fa-2x"></i></button>
 {% endblock%}
 
 {% block btn%}
-<form class="d-flex p-0 m-2" action="{% url 'radar:search_results'%}" method=GET>
+<form class="d-flex p-0 m-0" style="border-radius: 0px; width: 350px;"action="{% url 'radar:search_results'%}" method=GET>
     {% csrf_token %}
-    <input type="search" class="form-control" placeholder="Search posts" aria-label="Search" name="searched">
-    <button type="submit" class="btn" style="background-color: #B000FF; border-radius: 0px; "><i
-            class="fa-solid fa-magnifying-glass"></i></button>
+    <input type="search" class="form-control" placeholder="Search posts" aria-label="Search" name="searched" style="border-radius:0px; background-color: #0d0d0d; color:white;">
+    <button type="submit" class="btn" style="background-color: #0d0d0d; border-radius: 0px;height: 50px; "><i
+            class="fa-solid fa-magnifying-glass" style="color:white;"></i></button>
 </form>
 {% endblock%}
 
@@ -27,13 +27,15 @@
     <a href="" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         {% if user_profile.picture%}
         <img
-            src="{{user_profile.picture.url}}" class="rounded-circle dropdown-toggle "
-            alt="profile picture"></a>
+            src="{{user_profile.picture.url}}" class="profile" style="width: 50px;height: 50px;   border: 2px solid rgb(255, 255, 255);
+            "  
+            alt="profile picture">
+            </a>
         {%else%}
-        <img src="{{MEDIA_URL}}profile_pictures/placeholder.webp" class="rounded-circle dropdown-toggle " alt="profile picture"></a>
+        <img src="{{MEDIA_URL}}profile_pictures/placeholder.webp" class="profile " alt="profile picture"></a>
         {%endif%}
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li><a class="cta" href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
+    <ul class="dropdown-menu"  aria-labelledby="dropdownMenu2" style="background-color: #0d0d0d;">
+        <li><a href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
                     post</button></a></li>
         <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
                     type="button">Account</button></a></li>
