@@ -33,7 +33,7 @@ SECRET_KEY = key #...added
 # that stores manage.py
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # turned off debug mode following textbook chpt 19 python anywhere
 
 ALLOWED_HOSTS = ['radar1.pythonanywhere.com', '127.0.0.1'] # added
 
