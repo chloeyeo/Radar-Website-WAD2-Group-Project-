@@ -28,7 +28,7 @@ SECRET_KEY = '6$tbs2_&$^%zht1tmb9!q^uk0&zs(@k2^-zf0lx2)numua__3v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['radar1.pythonanywhere.com', '127.0.0.1'] # added
+ALLOWED_HOSTS = ['radar1.pythonanywhere.com', '127.0.0.1'] 
 
 
 # Application definition
