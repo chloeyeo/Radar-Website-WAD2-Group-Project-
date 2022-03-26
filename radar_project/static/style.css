@@ -147,7 +147,7 @@ button {
 }
 .profile {
   border-radius: 40px;
-  border: 3px solid rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
   overflow: hidden;
   background-position: center center;
   background-repeat: no-repeat;
@@ -162,6 +162,37 @@ button {
   width: 100%;
   cursor: pointer;
 }
+.dropdown-menu{
+  background-color: #0d0d0d !important;
+  border-radius: 0px !important;
+  
+}
+.dropdown-menu a{
+  color: #FFFFFF !important;
+  text-decoration: none;
+}
+
+.like{
+  background-color: white;
+  border: 0px solid rgb(31, 31, 31);
+  color:#818181
+}
+.like:hover{
+  color:red;
+  background-color: white;
+}
+.dropdown-menu li{
+  margin-left: auto;
+  margin-right: auto;
+}
+.dropdown-menu button{
+  color: #FFFFFF !important;
+  text-decoration: none;
+  
+}
+.dropdown-menu button:hover{
+  background-color: #272727;
+}
 .dropdown {
   position: relative;
   display: inline-block;
@@ -169,6 +200,10 @@ button {
 }
 .dropdown-content {
   display: none;
+}
+.dropdown-item{
+  color:white;
+  text-decoration: none;
 }
 .show {
   display: block;
@@ -256,6 +291,18 @@ img {
   margin-left: 50px;
 }
 
+
+
+.btn i{
+  color:grey;
+}
+.btn:hover i{
+  color: red;
+}
+.btn:hover{
+  background-color:rgba(255, 255, 255, 0.0);
+}
+
 .mode div:hover {
   cursor: pointer;
   color: #303030;
@@ -337,6 +384,8 @@ td {
 
 .logo {
   cursor: pointer;
+  max-width: 100%;
+  height: 80px;
 }
 .nav-links {
   list-style: none;
@@ -422,7 +471,16 @@ form {
   margin-top: 2%;
   margin-bottom: 3%;
   text-align: center;
+  
+  
 }
+@media screen and (max-width: 400px) {
+    form {
+       background-color: #000000;
+    }
+
+}
+  
 form * {
   font-family: "Poppins", sans-serif;
   color: #000000;

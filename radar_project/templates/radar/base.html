@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="{% static 'style.css'%}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -25,7 +26,7 @@
         
         {% block headerElementsBeforeNav%}
         {% endblock%}
-        <a href="{% url 'radar:homepage' %}"><img class="logo" src="{% static 'images/logo.jpg' %}" width=80 height="60" alt="logo"></a>
+        <a href="{% url 'radar:homepage' %}"><img class="logo" src="{% static 'images/TransparentLogo.png' %}" alt="logo" style="max-width:100%; height: auto; width: 70px;"></a>
 
         {% block btn%}
         {% endblock%}
