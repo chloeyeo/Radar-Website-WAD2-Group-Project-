@@ -1,7 +1,8 @@
 from django.test import TestCase
 from radar.models import Post, Category
 from django.contrib.auth.models import User
-
+from django.urls import reverse
+    
 # Create your tests here.
 
 class CategoryMethodTests(TestCase):
@@ -36,4 +37,12 @@ class PostMethodTests(TestCase):
         post.category_id = category.id
         post.save()
         self.assertEqual(post.slug, 'random-category-string')
-        
+
+
+class HomepageViewTests(TestCase):
+    def test_homepage_view_with_no_posts(self):
+        ''' If no posts exist, the appropriate message should be displayed. '''
+        response = self.client.get(reverse('radar:homepage'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'There are no posts present in your data base.')
+        self.assertQuerysetEqual(response.context['posts'],[])
