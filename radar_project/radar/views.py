@@ -58,6 +58,8 @@ def show_category(request, category_name_slug):
 def show_post(request, post_title_slug):
     context_dict = {}
     context_dict['current_user'] = request.user
+    userProfile = UserProfile.objects.get(user=request.user)
+    context_dict['user_profile'] = userProfile
     try:
         post = Post.objects.get(slug=post_title_slug)
         post.views += 1
@@ -191,8 +193,12 @@ def user_logout(request):
 
 @ login_required
 def add_post(request):
+    context_dict = {}
     submitted = False
     current_user = request.user
+
+    userProfile = UserProfile.objects.get(user=request.user)
+    context_dict['user_profile'] = userProfile
 
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -208,7 +214,6 @@ def add_post(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    context_dict = {}
     context_dict['form'] = form
     context_dict['submitted'] = submitted
     context_dict['current_user'] = current_user
