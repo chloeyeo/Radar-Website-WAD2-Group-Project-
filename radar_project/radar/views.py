@@ -46,7 +46,7 @@ def show_category(request, category_name_slug):
         category = Category.objects.get(slug=category_name_slug)
         category.views += 1  # added
         category.save()  # added
-        posts = Post.objects.filter(category=category).order_by('-likes')
+        posts = Post.objects.filter(category=category).order_by('-total_likes')
         context_dict['posts'] = posts
         context_dict['category'] = category
         if(not request.user.is_anonymous and UserProfile.objects.filter(user=request.user).exists()):
@@ -80,7 +80,7 @@ def homepage(request):
     context_dict = {}
     current_user = request.user
     try:
-        posts = Post.objects.order_by('-likes')
+        posts = Post.objects.order_by('-total_likes')
         context_dict['current_user'] = current_user.username
         for post in posts:
             post.set_total_likes()
