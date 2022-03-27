@@ -315,11 +315,11 @@ img {
   display: flex;
   justify-content: space-between;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1050px) {
   .fit {
     flex-direction: column;
+    }
   }
-}
 .fit-vertical {
   display: flex;
   justify-content: space-between;
