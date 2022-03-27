@@ -316,8 +316,10 @@ img {
   justify-content: space-between;
 }
 @media only screen and (max-width: 1050px) {
-  .fit {
-    flex-direction: column;
+  .card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     }
   }
 .fit-vertical {
