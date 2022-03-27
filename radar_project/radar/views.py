@@ -78,9 +78,8 @@ def homepage(request):
         for post in posts:
             post.set_total_likes()
         context_dict['posts'] = posts
-        if(current_user.is_authenticated):
-            user_profile = UserProfile.objects.get(user=current_user)
-            context_dict['liked_posts'] = current_user.posts.all()
+        if(not request.user.is_anonymous and UserProfile.objects.filter(user=request.user).exists()):
+            user_profile = UserProfile.objects.get(user=request.user)
             context_dict['user_profile'] = user_profile
 
     except:
