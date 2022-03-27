@@ -46,7 +46,7 @@ def show_category(request, category_name_slug):
         category = Category.objects.get(slug=category_name_slug)
         category.views += 1  # added
         category.save()  # added
-        posts = Post.objects.filter(category=category)
+        posts = Post.objects.filter(category=category).order_by('-total_likes')
         context_dict['posts'] = posts
         context_dict['category'] = category
     except Category.DoesNotExist:
@@ -73,7 +73,7 @@ def homepage(request):
     context_dict = {}
     current_user = request.user
     try:
-        posts = Post.objects.all()
+        posts = Post.objects.order_by('-total_likes')
         context_dict['current_user'] = current_user.username.lower()
         for post in posts:
             post.set_total_likes()
