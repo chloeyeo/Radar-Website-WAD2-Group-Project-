@@ -1,5 +1,5 @@
 {% extends 'radar/base1.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title_block %}
 {{ current_user.username }}
@@ -86,7 +86,7 @@
     
     </div>
     {% else %}
-    <strong>You haven't liked any posts.</strong>
+    <!--<strong>You haven't liked any posts.</strong>-->
     {% endif %}
 
     {% else %}

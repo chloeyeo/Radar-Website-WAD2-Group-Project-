@@ -315,6 +315,11 @@ img {
   display: flex;
   justify-content: space-between;
 }
+@media only screen and (max-width: 600px) {
+  .fit {
+    flex-direction: column;
+  }
+}
 .fit-vertical {
   display: flex;
   justify-content: space-between;
@@ -474,11 +479,10 @@ form {
   
   
 }
-@media screen and (max-width: 400px) {
-    form {
-       background-color: #000000;
-    }
-
+@media only screen and (max-width: 1050px) {
+form {
+    width: 80%;
+  }
 }
   
 form * {
