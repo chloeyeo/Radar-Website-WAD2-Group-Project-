@@ -21,7 +21,7 @@ class UserForm(forms.ModelForm):
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-select', 'placeholder': 'username'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'passord'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'password'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First name'}),
             'last_name': forms.TextInput(attrs={'class': "form-control", 'placeholder': 'Last name'}),
         }
