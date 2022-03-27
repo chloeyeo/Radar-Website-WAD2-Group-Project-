@@ -1,5 +1,5 @@
 {% extends 'radar/base1.html' %}
-{% load static %}
+{% load staticfiles %}
 
 {% block title_block %}
 {{ current_user.username }}
@@ -22,65 +22,72 @@
 
     </div>
 
-    <!-- user data, i don't know why this is a form -->
-<form class = "form">
-    <h3>{{current_user.username}} details</h3>
-    <input class = "form-control" type="text" placeholder={{current_user.username}} name="username" required>
+    <!-- User profile form -->
+    <div class="form-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="small mb-1">Username:</label>
+                {{ user_form.username }}
+                <label class="small mb-1">Email:</label>
+                {{ user_form.email }}
+            </div>
 
-    <input class = "form-control" type="text" placeholder={{current_user.email}} name="text" required>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+        </form>
+    </div>
 
-    <input class = "form-control" type="number" placeholder={{user_profile.age}} name="age" required>
 
-    <button class = "" type="submit" class="signup">Update</button>
-</form>
-</div>
+    {% if user_liked_posts %}
+    <h3>{{current_user}} interests</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in user_liked_posts %}
+        <div class="col">
+            <a href="{% url 'radar:post' post.slug %}" style="color:black; text-decoration: none;text-align: left;">
+                <div class="card">
 
-{% if user_liked_posts %}
-<h3 style="margin-left: 5%;">{{current_user}} interests</h3>
-<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-left: 5%; margin-right: 5%;margin-top: 1%;">
-    {% for post in user_liked_posts %}
-    
-    <div class="col">
-        <a href="{% url 'radar:post' post.slug %}" style="color:black; text-decoration: none;text-align: left;">
-            <div class="card shadow mb-5 bg-white rounded" style="cursor: pointer; " >
                     {% if post.image %}
-                    <img src="{{post.image.url}}" class="card-img-top hover-zoom" alt="{{ post.title}} image" style = "height: 15vw; width: 100%; object-fit: cover;">
+                    <img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}} image" style="height: 20em">
                     {% else %}
                     <!-- show default image -->
-                    <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image" >
+                    <img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image"
+                        style="height: 20em">
                     {% endif %}
-                
-                <div class="card-body">
-                    <h5 class="card-title">{{post.title}}</h5>
-                    <p class="card-text" style = "overflow:hidden; text-overflow: clip; white-space: nowrap;">{{post.description}}</p>
-                    <p id = "like_count" class="card-text"><small class="text-muted" name = "{{post.id}}">Likes : {{ post.total_likes }}</small></p>
-                    <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
-                </div>
-            </a>
-                <div class="card-footer text-center" style=" width: 100%;">
-                    <div>
-                        {% if user.is_authenticated %}
-                        <button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href="" ><i class="fa-solid fa-heart">
-                            </i></button>
-                        {% else %}
-                        <button type="button" class="login_to_like btn btn-outline-dark" >like</button>
 
-                        {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text" style="overflow:hidden; text-overflow: clip; white-space: nowrap;">
+                            {{post.description}}</p>
+                        <p class="card-text"><small class="text-muted">Likes : {{ post.total_likes }}</small></p>
+                        <p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
+                    </div>
+                    <div class="card-footer">
+
+
+                        <div>
+                            {% if user.is_authenticated %}
+                            <button class="like_post_btn btn btn-outline-dark" post-id="{{ post.id }}" type="button">
+                                Like </button>
+                            {% else %}
+                            <button type="button" class="login_to_like btn btn-outline-dark">like</button>
+                            {% endif %}
+                        </div>
+
                     </div>
                 </div>
-                
-            </div>
-        
+            </a>
         </div>
-    {% endfor %}
+        {% endfor %}
 
-</div>
-{% else %}
-<strong>You haven't liked any posts.</strong>
-{% endif %}
+    </div>
+    {% else %}
+    <strong>You haven't liked any posts.</strong>
+    {% endif %}
 
-{% else %}
-The specified user does not exist.
-{% endif %}
+    {% else %}
+    The specified user does not exist.
+    {% endif %}
 
-{% endblock %}
+    {% endblock %}
