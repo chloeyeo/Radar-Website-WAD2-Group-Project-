@@ -2,7 +2,7 @@ import json
 from urllib import response
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
-from radar.forms import UserForm, UserProfileForm, PostForm
+from radar.forms import UserForm, UserProfileForm, PostForm, UpdateUserForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
@@ -44,8 +44,8 @@ def show_category(request, category_name_slug):
     context_dict['current_user'] = current_user
     try:
         category = Category.objects.get(slug=category_name_slug)
-        category.views += 1 # added
-        category.save() # added
+        category.views += 1  # added
+        category.save()  # added
         posts = Post.objects.filter(category=category)
         context_dict['posts'] = posts
         context_dict['category'] = category
@@ -160,14 +160,26 @@ def account(request, current_user_slug):
     context_dict['current_user'] = current_user
     user_liked_posts = current_user.posts.all()
     try:
-        userProfile = UserProfile.objects.get(slug=current_user_slug)
-        context_dict['user_profile'] = userProfile
+        if (UserProfile.objects.filter(user=request.user).exists()):
+            userProfile = UserProfile.objects.get(slug=current_user_slug)
+            context_dict['user_profile'] = userProfile
         for post in user_liked_posts:
             post.set_total_likes()
     except UserProfile.DoesNotExist:
         context_dict['user'] = None
     context_dict['user_liked_posts'] = user_liked_posts
 
+    # update account logic
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return HttpResponseRedirect('/radar/account/' + current_user_slug)
+
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+
+    context_dict['user_form'] = user_form
     return render(request, 'radar/account.html', context=context_dict)
 
 
