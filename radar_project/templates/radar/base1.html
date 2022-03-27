@@ -37,7 +37,7 @@
     <ul class="dropdown-menu"  aria-labelledby="dropdownMenu2" style="background-color: #0d0d0d;">
         <li><a href="{% url 'radar:addPost' %}"><button class="dropdown-item" type="button">Add
                     post</button></a></li>
-        <li><a class="cta" href="/radar/account/{{current_user}}"><button class="dropdown-item"
+        <li><a class="cta" href="{% url 'radar:account' current_user %}"><button class="dropdown-item"
                     type="button">Account</button></a></li>
         <li><a class="cta" href="{% url 'radar:logout' %}"><button class="dropdown-item" type="button">Sign
                     out</button></a></li>
