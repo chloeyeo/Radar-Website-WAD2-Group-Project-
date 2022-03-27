@@ -61,3 +61,20 @@ class PostForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Place description', 'id': "exampleFormControlTextarea1", 'rows': "3"}),
             'image': forms.ClearableFileInput(attrs={'class': "form-control form-control-lg", 'id': "formFileLg", 'type': "file", }),
         }
+
+# update profile logic
+
+
+class UpdateUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+        labels = {
+            'username': '',
+            'email': '',
+        }
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'username', }),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'email'}),
+        }
