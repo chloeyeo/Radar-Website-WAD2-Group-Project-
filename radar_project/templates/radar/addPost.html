@@ -13,12 +13,12 @@ you submitted a post
 
 {% else %}
 
-<form method=POST action=""  >
+<form method=POST action="{% url 'radar:addPost' %}"  enctype="multipart/form-data">
   {% csrf_token %}
 
   {{ form.as_p}}
 
-  <input type="submit" name="submit" class="btn btn-secondary">
+  <input type="submit" name="submit" class="btn btn-secondary" >
 </form>
 
 {% endif %}

@@ -193,10 +193,15 @@ def user_logout(request):
 def add_post(request):
     submitted = False
     current_user = request.user
+
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            added_post = form.save(commit=False)
+            if 'image' in request.FILES:
+                added_post.image = request.FILES['image']
+            print(added_post)
+            added_post.save()
             return HttpResponseRedirect('/radar/addPost?submitted=True')
     else:
         form = PostForm
@@ -209,3 +214,17 @@ def add_post(request):
     context_dict['current_user'] = current_user
 
     return render(request, 'radar/addPost.html', context_dict)
+
+    # helper functions
+
+
+def create_default_categories():
+    cat1 = Category.objects.get_or_create(name='Cartoons')[0]
+    cat2 = Category.objects.get_or_create(name='Anime')[0]
+    cat3 = Category.objects.get_or_create(name='Movies')[0]
+    cat4 = Category.objects.get_or_create(name='Video Games')[0]
+
+    cat1.save()
+    cat2.save()
+    cat3.save()
+    cat4.save()

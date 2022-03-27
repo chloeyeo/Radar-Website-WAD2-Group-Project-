@@ -17,7 +17,7 @@
 {% block body_block %}
 {%if registered%}
 <strong>Thank you for registering with us!</strong>
-<a href="{% url 'radar:homepage' %}">Return to the homepage.</a><br />
+<a href="{% url 'radar:login' %}">Return to the Login page.</a><br />
 {% else %}
 	
 <form id="sign-up-form" method="post" action="{% url 'radar:signup' %}" enctype="multipart/form-data">

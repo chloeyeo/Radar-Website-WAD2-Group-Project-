@@ -1,12 +1,11 @@
-from django.core.files.images import ImageFile
-from django.contrib.auth.models import User
-from radar.models import Category, Post
-import django
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'radar_project.settings')
 
+import django
 django.setup()
-
+from radar.models import Category, Post
+from django.contrib.auth.models import User
+from django.core.files.images import ImageFile
 
 def populate():
     cartoon = [
