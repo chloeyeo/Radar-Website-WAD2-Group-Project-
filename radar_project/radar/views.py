@@ -216,15 +216,3 @@ def add_post(request):
     return render(request, 'radar/addPost.html', context_dict)
 
     # helper functions
-
-
-def create_default_categories():
-    cat1 = Category.objects.get_or_create(name='Cartoons')[0]
-    cat2 = Category.objects.get_or_create(name='Anime')[0]
-    cat3 = Category.objects.get_or_create(name='Movies')[0]
-    cat4 = Category.objects.get_or_create(name='Video Games')[0]
-
-    cat1.save()
-    cat2.save()
-    cat3.save()
-    cat4.save()
