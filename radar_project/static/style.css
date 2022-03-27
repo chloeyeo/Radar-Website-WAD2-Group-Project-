@@ -10,15 +10,21 @@ i {
   overflow: hidden;
   background-color: #333;
   font-family: Arial, Helvetica, sans-serif;
+  position: fixed; /*added */
+  top: 30px; /*added*/
 }
 
 .carddiv {
   color: black;
   text-decoration: none;
   text-align: left;
+  position: fixed; /*added*/
+  top: 30px; /*added*/
 }
 .navbar a {
-  float: left;
+  /*float: left;*/
+  position: fixed; /*added*/
+  top: 30px; /*added*/
   font-size: 16px;
   color: white;
   text-align: center;
@@ -154,6 +160,7 @@ button {
   height: 60px;
   width: 60px;
   align-items: center;
+  float: right; /*added*/
 }
 
 .profile img {
@@ -161,6 +168,7 @@ button {
   height: auto;
   width: 100%;
   cursor: pointer;
+  float: right; /*added*/
 }
 .dropdown-menu {
   background-color: #0d0d0d !important;
