@@ -30,10 +30,18 @@ View post
            
                 <div style="margin-left: auto; margin-right: auto;">
                     {% if user.is_authenticated %}
-                    <button class="like_post_btn btn" post-id="{{ post.id }}" type="button" href="" ><i class="fa-solid fa-heart fa-2x" >
+                    {% if user in post.likes.all%}
+                    <button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href=""><i
+                            class="fa-solid fa-heart {{ post.id }}" style="color: red">
                         </i></button>
                     {% else %}
-                    <button type="button" class="login_to_like btn btn-outline-dark" >like</button>
+                    <button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href=""><i
+                            class="fa-solid fa-heart {{ post.id }}" style="color: grey">
+                        </i></button>
+                    {%endif%}
+                    {% else %}
+                    <button type="button" class="login_to_like btn"><i class="fa-solid fa-heart"></i></button>
+                    
                     {% endif %}
                 </div>
             

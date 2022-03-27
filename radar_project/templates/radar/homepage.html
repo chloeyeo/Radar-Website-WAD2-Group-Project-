@@ -31,10 +31,16 @@
 						<div class="card-footer text-center" style=" width: 100%; background-color:white;" >
 							<div>
 								{% if user.is_authenticated %}
-								<button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href="" ><i class="fa-solid fa-heart">
-									</i></button>
+									{% if user in post.likes.all%}
+									<button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href=""><i
+											class="fa-solid fa-heart {{ post.id }}" style = "color: red">
+										</i></button>
+									{% else %}
+									<button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href="" ><i class="fa-solid fa-heart {{ post.id }}" style = "color: grey">
+										</i></button>
+									{%endif%}
 								{% else %}
-								<button type="button" class="like_post_btn btn"><i class="fa-solid fa-heart"></i></button>
+								<button type="button" class="login_to_like btn"><i class="fa-solid fa-heart"></i></button>
 
 								{% endif %}
 							</div>

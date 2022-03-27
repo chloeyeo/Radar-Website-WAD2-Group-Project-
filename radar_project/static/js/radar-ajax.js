@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-
+$(this).css('color','red')
     $(".like_post_btn").click(function(){
         var getPostId;
         getPostId = $(this).attr('post-id');
@@ -10,15 +10,18 @@ $(document).ready(function() {
             
             $(selector).html("Likes : " + data.total_likes);
 
-            // why isn't the button updating
+            // update button color depending on whether they have been liked
+            console.log(data.liked)
             if(data.liked){
-                $(this).css("Liked");
+                $("i."+name).css("color","red");
             }else{
-                $(this).html("Like");
+                $("i."+name).css("color","grey");
             }
         }
         );
     });
+
+
 
     $("#login_form").on("submit", function(){
         // adding some ajax functionality of login form

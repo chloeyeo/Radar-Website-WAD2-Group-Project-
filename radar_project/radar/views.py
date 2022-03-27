@@ -63,6 +63,7 @@ def show_post(request, post_title_slug):
         post.views += 1
         post.save()
         context_dict['post'] = post
+
     except Post.DoesNotExist:
         context_dict['post'] = None
 
@@ -74,7 +75,7 @@ def homepage(request):
     current_user = request.user
     try:
         posts = Post.objects.order_by('-total_likes')
-        context_dict['current_user'] = current_user.username.lower()
+        context_dict['current_user'] = current_user.username
         for post in posts:
             post.set_total_likes()
         context_dict['posts'] = posts
