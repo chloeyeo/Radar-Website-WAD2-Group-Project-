@@ -58,8 +58,9 @@ def show_category(request, category_name_slug):
 def show_post(request, post_title_slug):
     context_dict = {}
     context_dict['current_user'] = request.user
-    userProfile = UserProfile.objects.get(user=request.user)
-    context_dict['user_profile'] = userProfile
+    if(not request.user.is_anonymous and UserProfile.objects.filter(user=request.user).exists()):
+        user_profile = UserProfile.objects.get(user=request.user)
+        context_dict['user_profile'] = user_profile
     try:
         post = Post.objects.get(slug=post_title_slug)
         post.views += 1
