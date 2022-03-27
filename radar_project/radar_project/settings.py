@@ -27,9 +27,9 @@ SECRET_KEY = '6$tbs2_&$^%zht1tmb9!q^uk0&zs(@k2^-zf0lx2)numua__3v'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # turned off debug mode following textbook chpt 19 python anywhere
+DEBUG = True  # turned off debug mode following textbook chpt 19 python anywhere
 
-ALLOWED_HOSTS = ['radar1.pythonanywhere.com', '127.0.0.1'] # added
+ALLOWED_HOSTS = ['radar1.pythonanywhere.com', '127.0.0.1']  # added
 
 
 # Application definition
@@ -124,13 +124,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-#STATICFILES_DIRS = [STATIC_DIR, ] # commented out
-#STATIC_URL = '/static/' # commented out
+# STATICFILES_DIRS = [STATIC_DIR, ] # commented out
+# STATIC_URL = '/static/' # commented out
 
-STATIC_URL = '/static/' # added...
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] 
+STATIC_URL = '/static/'  # added...
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(VENV_PATH, 'static_root') # ...added
+STATIC_ROOT = os.path.join(VENV_PATH, 'static_root')  # ...added
 
 
 # MEDIA_DIR
