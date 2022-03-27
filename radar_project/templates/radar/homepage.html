@@ -15,7 +15,7 @@
 				<a href="{% url 'radar:post' post.slug %}" style="color:black; text-decoration: none;text-align: left;">
 					<div class="card shadow mb-5 bg-white rounded" style="cursor: pointer; " >
 							{% if post.image %}
-							<img src="{{post.image.url}}" class="card-img-top hover-zoom" alt="{{ post.title}} image" style = "height: 15vw; width: 100%; object-fit: cover;">
+							<img src="{{post.image.url}}" class="card-img-top" alt="{{ post.title}} image" style = "height: 15vw; width: 100%; object-fit: cover;">
 							{% else %}
 							<!-- show default image -->
 							<img src="{{MEDIA_URL}}images/placeholder.png" class="card-img-top" alt="{{ post.title}} image" >
@@ -28,13 +28,13 @@
 							<p class="card-text"><small class="text-muted">Views : {{ post.views }}</small></p>
 						</div>
 					</a>
-						<div class="card-footer text-center" style=" width: 100%;">
+						<div class="card-footer text-center" style=" width: 100%; background-color:white;" >
 							<div>
 								{% if user.is_authenticated %}
 								<button id="like" class="like_post_btn btn" post-id="{{ post.id }}" type="button" href="" ><i class="fa-solid fa-heart">
 									</i></button>
 								{% else %}
-								<button type="button" class="login_to_like btn btn-outline-dark" >like</button>
+								<button type="button" class="like_post_btn btn"><i class="fa-solid fa-heart"></i></button>
 
 								{% endif %}
 							</div>
