@@ -101,6 +101,7 @@ def search_results(request):
         posts = Post.objects.filter(title__contains=searched)
         context_dict['searched'] = searched
         context_dict['posts'] = posts
+        context_dict['current_user'] = request.user
         return render(request, 'radar/search_results.html', context=context_dict)
     else:
         return render(request, 'radar/search_results.html', context=context_dict)
