@@ -38,7 +38,7 @@ class UserProfileForm(forms.ModelForm):
         }
 
         widgets = {
-            'age': forms.TextInput(attrs={'class': 'form-control', 'value': '18', 'id': 'id_age'}),
+            'age': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'age', 'id': 'id_age'}),
             'picture': forms.ClearableFileInput(attrs={'class': "form-control form-control-lg", 'id': "formFileLg", 'type': "file", }),
         }
 

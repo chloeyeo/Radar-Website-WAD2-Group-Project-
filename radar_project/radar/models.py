@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_pictures/', blank=True)
-    age = models.IntegerField(default=18)
+    age = models.IntegerField()
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
