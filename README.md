@@ -4,7 +4,9 @@ Website URL: https://radar1.pythonanywhere.com/
 
 University of Glasgow Bsc Computing Science (4 Years) End of Year 2 (end of second term) WAD2 course group project.
 
-As our group project, we created a website called Radar using Python Django framework, HTML, JavaScript and HTML.
+As our group project, we created a web application called Radar using Python Django framework, HTML, JavaScript and HTML.
+
+This web application is deployed using PythonAnywhere.
 
 Radar is a website where you can visit various fantasy places/buildings by category
 
