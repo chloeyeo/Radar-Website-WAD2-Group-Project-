@@ -1,12 +1,12 @@
 # WAD2-Project
 
-Website URL: https://radar1.pythonanywhere.com/
+- Website URL: https://radar1.pythonanywhere.com/
 
-Demo of our web application: RadarPresentation.mp4
+- Demo of our web application: RadarPresentation.mp4
 
-Presentation file of our web application (design specification, technologies used and more): WAD2-Presentation.pptx
+- Presentation file of our web application (design specification, technologies used and more): WAD2-Presentation.pptx
 
-University of Glasgow Bsc Computing Science (4 Years) End of Year 2 (end of second term) WAD2 course group project.
+This is the WAD2 course group project done at the End of Year 2 (end of second term) in the University of Glasgow Bsc Computing Science (4 Years).
 
 As our group project, we created a web application called Radar using Python Django framework, HTML, JavaScript and HTML.
 
