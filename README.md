@@ -8,7 +8,7 @@
 
 This is the WAD2 course group project done at the End of Year 2 (end of second term) in the University of Glasgow Bsc Computing Science (4 Years), before March 27th 2022.
 
-As an individual grade, I have received A1 for this project.
+As an individual grade, I have received A1 for this project (myself being Chloe Yeo).
 
 As our group project, we created a web application called Radar using Python Django framework, HTML, JavaScript and HTML.
 
